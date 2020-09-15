@@ -1,25 +1,32 @@
 import React, { useState } from "react";
 import { View, Image, Text, SafeAreaView, ScrollView, StatusBar, Dimensions} from 'react-native';
-// import { Base, Container, ContainerButton } from '../../../styles/Base'
+import { Formik, useFormikContext } from 'formik'
+import * as Yup from 'yup'
+import { ThemeProvider } from 'styled-components'
+
+import { images, theme } from '../../../constants'
+import { InputLogin, HeaderNavigation, TextFooter } from '../../../components'
 import { 
   // BASE
   Base, 
   Container,
   Center,
   Row,
+  W100,
+
   // LOGIN
-  // LoginStyle, 
   ImageBackground,
   TextLogin,
   ImageContainer,
-  // InputContainer,
+
   InputItem,
   TextOlvidarPassword,
   SuscribeContainer,
   TextSuscribe,
-  // BuTTON
-  ButtonLogin,
-  TextButtonLogin,
+
+  // BUTTON
+  ButtonSecondary,
+  TextButtonSecondary,
   ButtonStyle,
 
   // THEME
@@ -27,13 +34,6 @@ import {
   ThemeLight,
   
 } from '../../../styles'
-// import { ThemeLight,ThemeDark } from '../../../styles/theme'
-
-import { images, theme } from '../../../constants'
-import { InputLogin, HeaderNavigation, TextFooter } from '../../../components'
-import { Formik, useFormikContext } from 'formik'
-import * as Yup from 'yup'
-import { ThemeProvider } from 'styled-components'
 
 const height = Dimensions.get('window').height
 
@@ -74,9 +74,9 @@ export const LoginScreen = ({ navigation }) => {
         <TextOlvidarPassword>¿Olvidaste la contraseña</TextOlvidarPassword>
 
         <Center>
-          <ButtonLogin onPress={submitForm} style={ButtonStyle.ButtonShadow}>
-            <TextButtonLogin>Entrar</TextButtonLogin>
-          </ButtonLogin>
+          <ButtonSecondary onPress={submitForm} style={ButtonStyle.ButtonShadow}>
+            <TextButtonSecondary>Entrar</TextButtonSecondary>
+          </ButtonSecondary>
         </Center>
 
       </>
@@ -91,21 +91,18 @@ export const LoginScreen = ({ navigation }) => {
             <SafeAreaView style={{flex: 1}}>
               <Container style={[Base.between, {height: height}]}>
                 <View>
-                  {/* HEADER */}
+                  
                   <HeaderNavigation>
                     <View></View>
                   </HeaderNavigation>
-                  {/* END HEADER */}
-                  {/* TITLE */}
+
                   <TextLogin>Bienvenido</TextLogin>
-                  {/* END TITLE */}
-                  {/* LOGO */}
+                  
                   <ImageContainer>
                     <Image source={images.images.LoginLogo} />
                   </ImageContainer>
-                  {/* END LOGO */}
-                  {/* FORM */}
-                  <Row>
+                  
+                  <W100>
                     <Formik
                       validationSchema={ Yup.object({
                         user: Yup
@@ -120,15 +117,14 @@ export const LoginScreen = ({ navigation }) => {
                     >
                       <InputsForm />
                     </Formik>
-                    <SuscribeContainer onPress={()=> navigation.navigate('Suscribe1')}>
+                    <SuscribeContainer onPress={()=> navigation.navigate('Screens')}>
                       <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
                     </SuscribeContainer>
-                  </Row>
-                  {/* END FORM */}
+                  </W100>
                 </View>
-                {/* <View style={{flex: 1, justifyContent: 'flex-end'}}> */}
-                  <TextFooter/>
-                {/* </View> */}
+                
+                <TextFooter/>
+                
               </Container>
             </SafeAreaView>
         </ImageBackground>

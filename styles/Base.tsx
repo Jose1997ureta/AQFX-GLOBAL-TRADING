@@ -13,11 +13,25 @@ export const ContainerButton = styled.View`
   align-items: center;
 `;
 export const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const W100 = styled.View`
   width: 100%;
 `;
 
 export const Center = styled.View`
   width: 100%;
+  align-items: center;
+  /* flex-direction: row;
+  justify-content: center; */
+`;
+
+export const Between = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
 

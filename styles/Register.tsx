@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { colors, sizes, weight } from '../constants/theme'
 import { theme } from '../constants'
 import styled from 'styled-components/native'
 
@@ -15,9 +14,8 @@ export const HeaderTitle = styled.Text`
   text-align: center;
   font-weight: ${theme.weight.bold};
   margin-bottom: 10px;
+  color: ${theme.colors.secondary};
 `;
-
-export const ImagenPaso1 = styled.Image``;
 
 export const ButtonAvatar = styled.TouchableOpacity`
   width: 100px;
@@ -39,79 +37,96 @@ export const Avatar = styled.Image`
 
 export const Camare = styled.Image``;
 
+export const ShowPassword = styled.TouchableOpacity`
+  position: absolute;
+  top: 2.5px;
+  right: 0;
+  z-index: 1;
+  padding: ${theme.sizes.padding}px;
+`;
+
+export const ContainerBandera = styled.View`
+  position: absolute;
+  top: 2.5px;
+  left: 0; 
+  z-index: 1;
+  flex-direction: row;
+  align-items: center;
+  padding: ${theme.sizes.padding}px; 
+`;
+
+export const TextPhone = styled.Text`
+  color: ${theme.colors.secondary};
+  padding-left:5px;
+`;
+
+// SUSCRIBE 2
+export const HeaderTarjeta = styled.View`
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 37px 0 28px;
+`;
+
+export const HeaderTarjetaText = styled.Text`
+  font-weight: ${theme.weight.bold};
+  font-size: ${theme.sizes.h4}px;
+  color: ${theme.colors.secondary};
+`;
+
+export const ContainerTarjeta = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  margin-top: 27px;
+`;
+
+export const HeaderMonto = styled.View`
+  width: 100%;
+  margin: 37px 0 28px; 
+`;
+
+export const HeaderMontoText = styled.Text`
+  font-weight: ${theme.weight.bold};
+  font-size: ${theme.sizes.h4}px;
+  color: ${theme.colors.secondary};
+`;
+
+export const Card = styled.View`
+  width: 100%;
+  background-color: #fff;
+  border-radius: ${theme.sizes.radiusInput}px;
+  padding: 73px 16px;
+  margin-bottom: 56px;
+`;
+
+export const CardText = styled.Text`
+  font-size: ${theme.sizes.h3}px;
+  color: ${theme.colors.secondary};
+  font-weight: ${theme.weight.bold};
+`;
+
+export const CardMonto = styled.Text`
+  font-size: ${theme.sizes.h1}px;
+  color: ${theme.colors.primary};
+  font-weight: ${theme.weight.bold};
+`;
+
 export const RegisterStyle = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: '#fff'
-  // },
-  // back:{
-  //   height: 25,
-  //   width: 25,
-  // },
-  // headerTitle: {
-  //   fontSize: theme.sizes.h4,
-  //   textAlign: 'center',
-  //   fontWeight: '700',
-  //   marginBottom: 10,
-  // },
-  // avatarPlaceholder: {
-  //   width: 100,
-  //   height: 100,
-  //   borderRadius: 150 / 2,
-  //   backgroundColor: '#FFF',
-  //   marginTop: 37,
-  //   marginBottom: 25,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 1,
-  //   },
-  //   shadowOpacity: 0.22,
-  //   shadowRadius: 2.22,
-  //   elevation: 3,
-  // },
-  // userRegister:{
-  //   position: 'absolute',
-  //   width: 100,
-  //   height: 100,
-  //   borderRadius: 150 / 2,
-  // },
-  camera: {
-    // width: 30,
-    // height: 30,
+  ButtonAvatarShadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
 
-  mostrarPassword:{
-    position: 'absolute',
-    top: 3,
-    right: 0,
-    zIndex: 1,
-    padding: theme.sizes.padding,
-  },
-  containerBandera:{
-    position: 'absolute',
-    top: 16,
-    left: 16,
-    zIndex: 1,
-  },
-  
-  textError: {
-    fontSize: sizes.h5,
-    color: colors.danger,
-    textAlign: 'center',
-    marginBottom: sizes.margin,
-    marginTop: 5
-  },
-
-  cardContainer: {
-    width: '100%',
-    // alignItems: 'center',
-    backgroundColor: '#fff',
-    borderRadius: theme.sizes.radiusInput,
-
+  CardShadow: {
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -121,18 +136,5 @@ export const RegisterStyle = StyleSheet.create({
     shadowRadius: 2.22,
 
     elevation: 4,
-    paddingHorizontal: theme.sizes.padding,
-    paddingVertical: 73,
-    marginBottom: 56,
   },
-  cardText:{
-    fontSize: theme.sizes.h3,
-    color: theme.colors.secondary,
-    fontWeight: theme.weight.bold,
-  },
-  cardMonto: {
-    fontSize: theme.sizes.h1,
-    color: theme.colors.primary,
-    fontWeight: theme.weight.bold,
-  }
 })

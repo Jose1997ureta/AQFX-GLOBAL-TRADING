@@ -15,6 +15,13 @@ export const Input = styled.TextInput`
 export const InputItem = styled.View`
   width: 100%;
   margin-bottom: ${theme.sizes.margin}px;
+
+  /* ${({alignCenter})=> {
+    switch (true) {
+      case alignCenter:
+          return `justify-content:center`
+    }
+  }} */
 `;
 
 export const TextError = styled.Text`

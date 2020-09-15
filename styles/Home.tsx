@@ -1,117 +1,93 @@
 import { StyleSheet } from 'react-native'
-import { colors, sizes, weight } from '../constants/theme'
 import { theme } from '../constants'
+import styled from 'styled-components/native'
 
-export const HomeStyle = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  // HEADER
-  back:{
-    height: 25,
-    width: 25,
-  },
-  // TITLE
-  titleHome: {
-    fontSize: theme.sizes.h1,
-    color: theme.colors.secondary,
-    lineHeight: 39,
-    fontWeight: theme.weight.bold,
-    marginRight: theme.sizes.margin - 10
-  },
-  puntoRed: {
-    width: 15,
-    height: 15,
-    backgroundColor: '#BA0019',
-    borderRadius: 15/2,
-  },
-  // CARD
-  cardContainer:{
-    marginTop: theme.sizes.margin,
-  },
-  card: {
-    height: 230,
-    borderRadius: theme.sizes.radiusInput,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  },
-  cardImage: {
-    height: 230,
-    width: '100%',
-    position: 'absolute',
-    borderRadius: theme.sizes.radiusInput,
-  },
-  cardContent:{
-    position: 'absolute',
-    height: 107,
-    width: '100%',
-    backgroundColor: theme.colors.secondary,
-    opacity: 0.8,
-    borderRadius: theme.sizes.radiusInput,
-    padding: theme.sizes.padding - 6,
-    justifyContent: 'space-between'
-  },
-  cardContentTitle: {
-    fontSize: theme.sizes.h4,
-    color: '#FFF',
-    lineHeight: 20,
-    fontWeight: theme.weight.bold,
-  },
+export const TitleHome = styled.Text`
+  font-size: ${theme.sizes.h1}px;
+  color: ${theme.colors.secondary};
+  line-height: 39px;
+  font-weight: ${theme.weight.bold};
+  margin-right: 14px;
+`;
 
-  // LINE
-  lineSeparator:{
-    width: 38,
-    height: 4,
-    backgroundColor: theme.colors.secondary,
-    marginTop: theme.sizes.margin + 10,
-    marginBottom: theme.sizes.margin + 16,
-    borderRadius: 15,
-  },
-  noticeContainer: {
-    // flex: 1,
-    // backgroundColor: 'red',
-  },
-  noticeTitle: {
-    fontSize: theme.sizes.h1,
-    color: theme.colors.secondary,
-    lineHeight: 39,
-    fontWeight: theme.weight.bold,
-  },
-  noticeTitleSeparator: {
-    width: 38,
-    height: 4,
-    backgroundColor: theme.colors.primary,
-    // marginBottom: theme.sizes.margin,
-    borderRadius: 1,
-  },
-  noticeItem: {
-    backgroundColor: '#fff',
-    borderBottomColor: theme.colors.secondary,
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
-    paddingTop: 24,
-    paddingBottom: 5,
-  },
-  noticeItemTitle: {
-    fontSize: theme.sizes.h4,
-    color: theme.colors.secondary,
-    lineHeight: 20,
-    fontWeight: theme.weight.bold,
-    marginBottom: theme.sizes.margin / 2,
-  },
-  noticeItemSubTitle: {
-    fontSize: theme.sizes.h5,
-    color: theme.colors.secondary,
-    lineHeight: 14,
-    fontWeight: theme.weight.semibold,
-    marginBottom: 7,
-  },
-  noticeItemDate:{
-    textAlign: 'right',
-    fontSize: theme.sizes.h5,
-    color: theme.colors.secondary,
-    lineHeight: 14,
-    fontWeight: theme.weight.normal,
-  }
-})
+export const PuntoRed = styled.View`
+  width: 15px;
+  height: 15px;
+  background-color: #BA0019;
+  border-radius: 7.5px;
+`;
+
+export const CardHome = styled.TouchableOpacity`
+  width: 48%;
+  height: 230px;
+  border-radius: ${theme.sizes.radiusInput}px;
+  flex-direction: row;
+  align-items: flex-end;
+`
+
+export const CardHomeImage = styled.Image`
+  height: 230px;
+  width: 100%;
+  position: absolute;
+  border-radius: ${theme.sizes.radiusInput}px;
+`;
+
+export const CardHomeContent = styled.View`
+  position: absolute;
+  height: 107px;
+  width: 100%;
+  background-color: ${theme.colors.secondary};
+  opacity: 0.8;
+  border-radius: ${theme.sizes.radiusInput}px;
+  padding: 10px;
+  justify-content: space-between;
+`;
+
+export const CardHomeContentText = styled.Text`
+  font-size: ${theme.sizes.h4}px;
+  color: #FFF;
+  line-height: 20px;
+  font-weight: ${theme.weight.bold};
+`;
+
+export const Separate = styled.View`
+  width: 38px;
+  height: 4px;
+  background-color: ${theme.colors.secondary};
+  margin-top: 34px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+`;
+
+export const CardHomeContentView = styled.View`
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+`;
+
+export const CardHomeContentViewText = styled.Text`
+  color: #fff;
+  margin-left: 5px;
+`;
+
+export const NoticeHomeContainer = styled.View`
+  flex: 1;
+  background-color: #fff;
+`;
+
+export const NoticeHomeTitle = styled.Text`
+  font-size: ${theme.sizes.h1}px;
+  color: ${theme.colors.secondary};
+  line-height: 39px;
+  font-weight: ${theme.weight.bold};
+  padding: 0 20px;
+`;
+
+export const NoticeHomeTitleLine = styled.View`
+  width: 38px;
+  height: 4px;
+  background-color: ${theme.colors.primary};
+  border-radius: 1px;
+  margin-left: 20px;
+`;

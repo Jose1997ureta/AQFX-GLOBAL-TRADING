@@ -1,42 +1,46 @@
 import React, { useState } from "react";
-import { View, Image, TouchableOpacity, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import * as ImagePicker from 'expo-image-picker'
 import { Formik, useFormikContext } from 'formik'
 import { Ionicons } from '@expo/vector-icons'
 import * as Yup from 'yup'
 import { ThemeProvider } from 'styled-components'
 
+import { images as image, theme} from '../../../constants'
+import  UserPermisions from '../../../model/Permissions' 
+import { TextInput, HeaderNavigation, TextFooter } from '../../../components'
 import { 
   Base,
   Container,
   Center,
   Row,
+  W100,
   
   // REGISTER 1
   RegisterStyle, 
   HeaderBack,
   ImagenBack,
   HeaderTitle,
-  ImagenPaso1,
   ButtonAvatar,
   Avatar,
   Camare,
+  ShowPassword,
+  ContainerBandera,
+  TextPhone,
 
   // INPUT
   InputItem,
 
   // BUTTON
-  Buttons,
+  ButtonPrimary,
   ButtonStyle,
-  TextButton,
+  TextButtonPrimary,
+  
   // THEME
   ThemeLight,
   ThemeDark,
   
 } from '../../../styles'
-import { images as image, theme} from '../../../constants'
-import  UserPermisions from '../../../components/Permissions' 
-import { TextInput, HeaderNavigation, TextFooter } from '../../../components'
 
 export const Suscribe1Screen =  ({ navigation }) => {
   const [imagePerfil, setImagenPerfil] = useState('')
@@ -65,7 +69,6 @@ export const Suscribe1Screen =  ({ navigation }) => {
             fieldName='name' 
             placeholder='Nombre'
             placeholderTextColor={theme.colors.textLight}
-            // style={InputStyle.inputItem}
           />
         </InputItem>
         
@@ -74,7 +77,6 @@ export const Suscribe1Screen =  ({ navigation }) => {
             fieldName='lastName' 
             placeholder='Apellidos'
             placeholderTextColor={theme.colors.textLight}
-            // style={InputStyle.inputItem}
           />
         </InputItem>
 
@@ -83,7 +85,6 @@ export const Suscribe1Screen =  ({ navigation }) => {
             fieldName='user' 
             placeholder='Usuario'
             placeholderTextColor={theme.colors.textLight}
-            // style={InputStyle.inputItem}
             inlineImageLeft='ios-information-circle'
           />
         </InputItem>
@@ -99,9 +100,9 @@ export const Suscribe1Screen =  ({ navigation }) => {
         </InputItem>
 
         <InputItem>
-          <TouchableOpacity style={RegisterStyle.mostrarPassword} onPress={() => setIsShowPassword(!isShowPassword)}>
+          <ShowPassword onPress={() => setIsShowPassword(!isShowPassword)}>
             <Ionicons name='ios-eye' size={24} color={theme.colors.secondary}/>
-          </TouchableOpacity>
+          </ShowPassword>
           <TextInput 
             fieldName='password' 
             placeholder='Contraseña'
@@ -122,10 +123,10 @@ export const Suscribe1Screen =  ({ navigation }) => {
         </InputItem>
 
         <InputItem>
-          <View style={[RegisterStyle.containerBandera, Base.row, Base.alignItemsCenter]}>
-            <Image source={image.images.Suscribe1Bandera} style={{marginRight: 10}} />
-            <Text>(51)</Text>
-          </View>
+          <ContainerBandera>
+            <Image source={image.images.Suscribe1Bandera}/>
+            <TextPhone>(51)</TextPhone>
+          </ContainerBandera>
           <TextInput 
             fieldName='phone' 
             placeholder='Número de celular'
@@ -138,9 +139,9 @@ export const Suscribe1Screen =  ({ navigation }) => {
         </InputItem>
 
         <Center>
-          <Buttons onPress={submitForm} style={ButtonStyle.ButtonShadow}>
-            <TextButton>Próximo</TextButton>
-          </Buttons>
+          <ButtonPrimary onPress={submitForm} style={ButtonStyle.ButtonShadow}>
+            <TextButtonPrimary>Próximo</TextButtonPrimary>
+          </ButtonPrimary>
         </Center>
     </>
     )
@@ -148,11 +149,12 @@ export const Suscribe1Screen =  ({ navigation }) => {
 
   const saveInformation = (x: Object) => {
     if(imagePerfil == '') {
-      alert('Seleccione una Imagen de Perdil')
+      alert('Seleccione una Imagen de Perfil')
     } else {
       x = { ...x, imagePerfil: imagePerfil}
       const usuario = JSON.stringify(x)
       navigation.navigate('Suscribe2', { datosUsuario: usuario })
+      console.log(usuario)
     }
     // console.log(x)
   }
@@ -163,31 +165,28 @@ export const Suscribe1Screen =  ({ navigation }) => {
       <ScrollView>
         <SafeAreaView>
           <Container>
-            {/* HEADER */}
+
             <HeaderNavigation>
               <HeaderBack onPress={()=> navigation.navigate('Login')}>
                 <ImagenBack source={image.images.Suscribe1ArrowLeft} />
               </HeaderBack>
             </HeaderNavigation>
-            {/* END HEADER */}
-            {/* PASO 1 */}
+
             <HeaderTitle>¿Listo para empezar a crear tu cuenta?</HeaderTitle>
             <Center style={Base.alignItemsCenter} >
-              <ImagenPaso1 source={image.images.Suscribe1Paso1} />
+              <Image source={image.images.Suscribe1Paso1} />
             </Center>
-            {/* END PASO 1 */}
-            {/* IMAGE PERFIL */}
+
             <Center>
-              <ButtonAvatar onPress={() => handlerPickAvatar()}>
+              <ButtonAvatar onPress={() => handlerPickAvatar()} style={RegisterStyle.ButtonAvatarShadow}>
                 { imagePerfil !== '' ? 
                   <Avatar source={{uri: imagePerfil}} /> : null
                 }
                 <Camare source={image.images.Suscribe1Camara}/>
               </ButtonAvatar>
             </Center>
-            {/* END IMAGE PERFIL */}
-            {/* FORM */}
-            <Row>
+
+            <W100>
               <Formik
                 validationSchema={ Yup.object({
                   name: Yup
@@ -228,13 +227,10 @@ export const Suscribe1Screen =  ({ navigation }) => {
               >
                 <InputsForm />
               </Formik>
-            </Row>
-            {/* END FORM */}
-            {/* TEXT FOOTER */}
-            {/* <View style={{marginBottom: theme.sizes.margin}}> */}
-              <TextFooter/>
-            {/* </View> */}
-            {/* END TEXT FOOTER */}
+            </W100>
+            
+            <TextFooter/>
+            
           </Container>
         </SafeAreaView>
       </ScrollView>

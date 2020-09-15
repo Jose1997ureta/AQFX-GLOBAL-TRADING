@@ -1,9 +1,42 @@
 import React, { useState } from "react";
-import { View, Image, TouchableOpacity, Text, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
+import { View, Image, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
+import { ThemeProvider } from 'styled-components'
 
-import { RegisterStyle, Base } from '../../../styles'
-import { images, theme} from '../../../constants'
-import { HeaderNavigation, TextFooter, Button } from '../../../components'
+import { images as image, theme} from '../../../constants'
+import { HeaderNavigation, TextFooter } from '../../../components'
+
+import { 
+  Base,
+  Container,
+  Center,
+  Row,
+  W100,
+  Between,
+
+  // SUSCRIBE 3
+  RegisterStyle,
+  HeaderBack,
+  ImagenBack,
+  HeaderTitle,
+  HeaderMonto,
+  HeaderMontoText,
+  Card,
+  CardText,
+  CardMonto,
+
+   // BUTTON
+   ButtonPrimary,
+   ButtonSecondary,
+   TextButtonPrimary,
+   TextButtonSecondary,
+   ButtonStyle,
+
+   // THEME
+  ThemeLight,
+  ThemeDark,
+
+  // RegisterStyle,  
+} from '../../../styles'
 
 const height = Dimensions.get('window').height
 
@@ -18,53 +51,51 @@ export const Suscribe3Screen =  ({ navigation }) => {
   }
 
   return (
-    <View style={RegisterStyle.container}>
+    <ThemeProvider theme={ThemeLight}>
       <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
       <ScrollView>
         <SafeAreaView>
-          <View style={[Base.viewContainer, Base.between , {height: height}]}>
+          <Container style={[Base.between , {height: height}]}>
             <View>
-              {/* HEADER */}
+
               <HeaderNavigation>
-                <TouchableOpacity onPress={()=> navigation.navigate('Suscribe1')}>
-                  <Image source={images.images.Suscribe1ArrowLeft} style={RegisterStyle.back} />
-                </TouchableOpacity>
+                <HeaderBack onPress={()=> navigation.navigate('Suscribe2')}>
+                  <ImagenBack source={image.images.Suscribe1ArrowLeft} />
+                </HeaderBack>
               </HeaderNavigation>
-              {/* END HEADER */}
-              {/* PASO 3 */}
-              <Text style={RegisterStyle.headerTitle}>Un pasó para tu futuro</Text>
-              <View style={Base.alignItemsCenter} >
-                <Image source={images.images.Suscribe3Paso3} />
-              </View>
-              {/* END PASO 3 */}
-              {/* TITLE MONTO */}
-              <Text style={[Base.textBold, {fontSize: theme.sizes.h4, marginTop: 37, marginBottom: theme.sizes.margin * 2}]}>Monto a cobrar (por mes)</Text>
-              {/* EDND TITLE MONTO */}
-              {/* CARD MONTO */}
-              <View style={RegisterStyle.cardContainer}>
-                <View style={[Base.row, Base.between]}>
-                  <Text style={RegisterStyle.cardText}>Monto:</Text>
-                  <Text style={RegisterStyle.cardMonto}>${montoSuscripcion}</Text>
-                </View>
-              </View>
-              {/* END CARD MONTO */}
-              {/* BOTONES */}
-              <View style={[Base.alignItemsCenter]}>
-                <View style={{marginBottom: theme.sizes.margin}}>
-                  <Button onPress={()=> saveTarjeta()}  type='primary'  text='Susbrirse'/>
-                </View>
-                <Button onPress={()=> navigation.navigate('Login')}  type='secondary'  text='Cancelar'/>
-              </View>
-              {/* END BOTONES */}
+
+              <HeaderTitle>Un pasó para tu futuro</HeaderTitle>
+              <Center>
+                <Image source={image.images.Suscribe3Paso3} />
+              </Center>
+
+              <HeaderMonto>
+                <HeaderMontoText>Monto a cobrar (por mes)</HeaderMontoText>
+              </HeaderMonto>
+
+              <Card style={RegisterStyle.CardShadow}>
+                <Between>
+                  <CardText>Monto:</CardText>
+                  <CardMonto>${montoSuscripcion}</CardMonto>
+                </Between>
+              </Card>
+
+              <Center>
+                <ButtonPrimary onPress={()=> saveTarjeta()} style={[ButtonStyle.ButtonShadow,{marginBottom: theme.sizes.margin}]}>
+                  <TextButtonPrimary>Susbrirse</TextButtonPrimary>
+                </ButtonPrimary>
+                <ButtonSecondary onPress={()=> navigation.navigate('Login')} style={ButtonStyle.ButtonShadow}>
+                  <TextButtonSecondary>Cancelar</TextButtonSecondary>
+                </ButtonSecondary>
+              </Center>
+              
             </View>
-            {/* TEXT FOOTER */}
-            {/* <View style={{flex: 1, justifyContent: 'flex-end'}}> */}
-              <TextFooter />
-            {/* </View> */}
-            {/* END TEXT FOOTER */}
-          </View>
+
+            <TextFooter />
+            
+          </Container>
         </SafeAreaView>
       </ScrollView>
-    </View>
+    </ThemeProvider>
   )
 }

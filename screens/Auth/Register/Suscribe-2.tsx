@@ -3,10 +3,38 @@ import { View, Image, TouchableOpacity, Text, SafeAreaView, ScrollView, Dimensio
 import { Formik, useFormikContext } from 'formik'
 import DateTimePickerModal  from 'react-native-modal-datetime-picker'
 import * as Yup from 'yup'
+import { ThemeProvider } from 'styled-components'
 
-import { RegisterStyle, InputStyle, Base } from '../../../styles'
-import { images, theme} from '../../../constants'
-import { Input, Button, HeaderNavigation, TextFooter } from '../../../components'
+import { images as image, theme} from '../../../constants'
+import { TextInput, HeaderNavigation, TextFooter } from '../../../components'
+import { 
+  Base,
+  Container,
+  Center,
+  Row,
+  W100,
+  Between,
+ 
+  // SUSCRIBE 2 
+  HeaderBack,
+  ImagenBack,
+  HeaderTitle,
+  HeaderTarjeta,
+  HeaderTarjetaText,
+  ContainerTarjeta,
+
+  // INPUT
+  InputItem,
+
+  // BUTTON
+  ButtonPrimary,
+  ButtonStyle,
+  TextButtonPrimary,
+
+  // THEME
+  ThemeLight,
+  ThemeDark,
+} from '../../../styles'
 
 const height = Dimensions.get('window').height
 
@@ -47,25 +75,23 @@ export const Suscribe2Screen =  ({ navigation }) => {
     const { submitForm } = useFormikContext()
     return (
       <>
-        <View style={[Base.w100, {marginBottom: theme.sizes.margin}]}>
-          <Input 
+        <InputItem>
+          <TextInput 
             fieldName='numeroTarjeta' 
             placeholder='Número de Tarjeta'
             placeholderTextColor={theme.colors.textLight}
-            style={[InputStyle.inputItem]}
             keyboardType='numeric'
             maxLength={16}
           />
-        </View>
+        </InputItem>
 
-        <View style={[Base.row, Base.between, Base.w100, {marginBottom: theme.sizes.margin}]} >
+        <Between style={{marginBottom: theme.sizes.margin}} >
           <View style={[Base.w50]}>
             <TouchableOpacity onPress={()=> setIsFecha(true)}>
-              <Input 
+              <TextInput 
                 fieldName='date' 
                 placeholder='Fecha de validez'
                 placeholderTextColor={theme.colors.textLight}
-                style={[InputStyle.inputItem,Base.w100]}
                 keyboardType='number-pad'
                 maxLength={10}
                 editable = {false}
@@ -82,34 +108,36 @@ export const Suscribe2Screen =  ({ navigation }) => {
           </View>
             
           <View style={[Base.w50]}>
-            <Input 
+            <TextInput 
               fieldName='code' 
               placeholder='CVC/CVV'
               placeholderTextColor={theme.colors.textLight}
-              style={[InputStyle.inputItem,Base.w100]}
               keyboardType='numeric'
               maxLength={3}
             />
           </View>
-        </View>
+        </Between>
 
-        <View style={[Base.w100, {marginBottom: theme.sizes.margin}]}>
-          <Input 
+        <InputItem>
+          <TextInput 
             fieldName='country' 
             placeholder={'País'}
             placeholderTextColor={theme.colors.textLight}
-            style={[InputStyle.inputItem, {marginBottom: theme.sizes.margin}]}
           />
-        </View>
+        </InputItem>
 
-        <View style={[Base.row,Base.w100, Base.justifyAround, {marginBottom: 25}]}>
-          <Image source={images.images.Suscribe2Visa}/>
-          <Image source={images.images.Suscribe2MasterCard}/>
-          <Image source={images.images.Suscribe2Paypal}/>
-          <Image source={images.images.Suscribe2Ebay}/>
-        </View>
+        <ContainerTarjeta>
+          <Image source={image.images.Suscribe2Visa}/>
+          <Image source={image.images.Suscribe2MasterCard}/>
+          <Image source={image.images.Suscribe2Paypal}/>
+          <Image source={image.images.Suscribe2Ebay}/>
+        </ContainerTarjeta>
 
-        <Button onPress={ submitForm } type='primary' text='Próximo'/>
+        <Center>
+          <ButtonPrimary onPress={submitForm} style={ButtonStyle.ButtonShadow}>
+            <TextButtonPrimary>Próximo</TextButtonPrimary>
+          </ButtonPrimary>
+        </Center>
     </>
     )
   }
@@ -118,50 +146,43 @@ export const Suscribe2Screen =  ({ navigation }) => {
     const usuario = JSON.parse(datosUser)
     let dataUserTarjeta = Object.assign(usuario, x)
     dataUserTarjeta = {... dataUserTarjeta, date: fechaTarjeta}
-    // console.log(dataUserTarjeta)
+    console.log(dataUserTarjeta)
     navigation.navigate('Suscribe3', { datosUserTarjeta: dataUserTarjeta })
   }
 
   return (
-    <View style={RegisterStyle.container}>
+    <ThemeProvider theme={ThemeLight}>
       <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
       <ScrollView>
         <SafeAreaView>
-          <View style={[Base.viewContainer, Base.between , {height: height}]}>
+          <Container style={[Base.between , {height: height}]}>
             <View>
-              {/* HEADER */}
               <HeaderNavigation>
-                <TouchableOpacity onPress={()=> navigation.navigate('Suscribe1')}>
-                  <Image source={images.images.Suscribe1ArrowLeft} style={RegisterStyle.back} />
-                </TouchableOpacity>
+                <HeaderBack onPress={()=> navigation.navigate('Suscribe1')}>
+                  <ImagenBack source={image.images.Suscribe1ArrowLeft} />
+                </HeaderBack>
               </HeaderNavigation>
-              {/* END HEADER */}
-              {/* PASO 2 */}
-              <Text style={RegisterStyle.headerTitle}>Todo los campos son obligatorios</Text>
-              <View style={Base.alignItemsCenter} >
-                <Image source={images.images.Suscribe2Paso2} />
-              </View>
-              {/* END PASO 2 */}
-              {/* TITLE TARJETAS */}
-              <View style={[Base.row, Base.w100, Base.between, {marginTop: 37, marginBottom: theme.sizes.margin * 2}]}>
-                <Text style={[Base.textBold, {fontSize: theme.sizes.h4}]}>Registrar tarjeta</Text>
-                <View style={Base.row}>
-                  <Image source={images.images.Suscribe2TarjetaFrente} style={{marginRight: 10}} />
-                  <Image source={images.images.Suscribe2TarjetaAtras} />
-                </View>
-              </View>
-              {/* END TITLE TARJETAS */}
-              {/* FORM */}
-              <View style={InputStyle.inputContainer}>
+
+              <HeaderTitle>Todo los campos son obligatorios</HeaderTitle>
+              <Center>
+                <Image source={image.images.Suscribe2Paso2} />
+              </Center>
+
+              <HeaderTarjeta>
+                <HeaderTarjetaText>Registrar tarjeta</HeaderTarjetaText>
+                <Row>
+                  <Image source={image.images.Suscribe2TarjetaFrente} style={{marginRight: 10}} />
+                  <Image source={image.images.Suscribe2TarjetaAtras} />
+                </Row>
+              </HeaderTarjeta>
+
+              <W100>
                 <Formik
                   validationSchema={ Yup.object({
                     numeroTarjeta: Yup
                       .string()
                       .min(16, 'El formato incorrecto')
                       .required('El nombre es requerido'),
-                    // date: Yup
-                    //   .string(),
-                    //   // .required('Fecha requerido'),
                     code: Yup
                       .string()
                       .min(3, 'El codigo es incorrecto')
@@ -176,17 +197,12 @@ export const Suscribe2Screen =  ({ navigation }) => {
                   <InputsForm />
                 </Formik>
                 
-              </View>
+              </W100>
             </View>
-            {/* END FORM */}
-            {/* TEXT FOOTER */}
-            {/* <View style={{flex: 1, justifyContent: 'flex-end'}}> */}
-              <TextFooter />
-            {/* </View> */}
-            {/* END TEXT FOOTER */}
-          </View>
+            <TextFooter />
+          </Container>
         </SafeAreaView>
       </ScrollView>
-    </View>
+    </ThemeProvider>
   )
 }

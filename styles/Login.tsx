@@ -7,7 +7,6 @@ const height = Dimensions.get('window').height
 export const ImageBackground = styled.ImageBackground`
   flex: 1;
   background-color: ${props => props.theme.background};
-  height: ${height}px;
 `;
 
 export const TextLogin = styled.Text`
@@ -23,11 +22,6 @@ export const ImageContainer = styled.View`
   align-items: center;
   margin-bottom: 65px;
 `;
-
-// export const InputItem = styled.View`
-//   width: 100%;
-//   margin-bottom: ${theme.sizes.margin}px;
-// `;
 
 export const TextOlvidarPassword = styled.Text`
   margin-bottom: ${theme.sizes.margin}px;

@@ -2,26 +2,26 @@ import { theme } from '../constants'
 import styled from 'styled-components/native'
 import { StyleSheet } from 'react-native'
 
-export const Buttons = styled.TouchableOpacity`
+export const ButtonPrimary = styled.TouchableOpacity`
   padding: 9px 29px;
   border-radius: 5px;
   background-color: ${theme.colors.primary};
 `;
 
-export const ButtonLogin = styled.TouchableOpacity`
+export const ButtonSecondary = styled.TouchableOpacity`
   padding: 9px 29px;
   border-radius: 5px;
   background-color: ${props => props.theme.backgroundButtonLogin};
 `;
 
-export const TextButtonLogin = styled.Text`
+export const TextButtonSecondary = styled.Text`
   text-align: center;
   font-size: ${theme.sizes.h4}px;
   font-weight: ${theme.weight.bold};
   color: ${props => props.theme.TextButtonLogin};
 `;
 
-export const TextButton = styled.Text`
+export const TextButtonPrimary = styled.Text`
   text-align: center;
   font-size: ${theme.sizes.h4}px;
   font-weight: ${theme.weight.bold};
