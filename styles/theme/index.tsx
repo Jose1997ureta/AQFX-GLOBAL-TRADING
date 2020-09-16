@@ -10,6 +10,8 @@ export const ThemeLight = {
 
   backgroundInput: '#FFF',
   borderButton: '#eee',
+
+  backgroundInputLogin: theme.colors.third,
 }
 
 export const ThemeDark = {
@@ -22,4 +24,6 @@ export const ThemeDark = {
 
   backgroundInput: '#6B6C6E',
   borderButton: '#6B6C6E',
+
+  backgroundInputLogin: '#6B6C6F',
 }

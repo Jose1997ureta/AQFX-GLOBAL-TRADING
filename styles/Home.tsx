@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+
 import { theme } from '../constants'
 import styled from 'styled-components/native'
 

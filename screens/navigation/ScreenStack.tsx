@@ -1,20 +1,24 @@
 import React from 'react'
-import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator, CardStyleInterpolators } from 'react-navigation-stack'
 
 // SCREENS
 import HomeScreen from '../Home'
-import PostScreen from '../Post'
+import { NoticeScreen } from '../Notice'
+// import PostScreen from '../Post'
 import CursoScreen from '../Cursos'
 import DetalleCursoScreen from '../DetalleCurso'
 
-
 export const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Post: PostScreen,
+  Notice: NoticeScreen,
 },{
   initialRouteName: 'Home',
-  // mode: 'none'
-  headerMode: 'none'
+  headerMode: 'none',
+  defaultNavigationOptions: {
+    gestureEnabled: false,
+    gestureDirection: 'horizontal',
+    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+  },
 })
 
 export const CursosStack = createStackNavigator({

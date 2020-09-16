@@ -6,22 +6,16 @@ export const Input = styled.TextInput`
   width: 100%;
   font-size: ${theme.sizes.h5}px;
   line-height: ${theme.sizes.h4}px;
-  background-color: #fff;
+  background-color: ${props => props.theme.backgroundInput};
   padding: ${theme.sizes.padding}px;
   border-radius: ${theme.sizes.radiusInput}px;
-  border: 1px solid #eee;
+  border: 1px solid ${props => props.theme.borderButton};
+  color: ${props => props.theme.textColor};
 `;
 
 export const InputItem = styled.View`
   width: 100%;
   margin-bottom: ${theme.sizes.margin}px;
-
-  /* ${({alignCenter})=> {
-    switch (true) {
-      case alignCenter:
-          return `justify-content:center`
-    }
-  }} */
 `;
 
 export const TextError = styled.Text`
@@ -36,7 +30,7 @@ export const InputLogins = styled.TextInput`
   width: 100%;
   font-size: ${theme.sizes.h5}px;
   line-height: ${theme.sizes.h4}px;
-  background-color: ${props => props.theme.backgroundInput};
+  background-color: ${props => props.theme.backgroundInputLogin};
   padding: ${theme.sizes.padding}px;
   border-radius: ${theme.sizes.radiusInput}px;
   border: 1px solid ${props => props.theme.borderButton};

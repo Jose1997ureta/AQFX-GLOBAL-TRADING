@@ -12,10 +12,12 @@ export const images = {
   Suscribe1Camara: require('../assets/Suscribe-1/Camara.png'),
   Suscribe1Bandera: require('../assets/Suscribe-1/Bandera.png'),
   Suscribe1Paso1: require('../assets/Suscribe-1/Paso-1.png'),
+  Suscribe1Paso1Black: require('../assets/Suscribe-1/Paso-1-black.png'),
   Suscribe1Views: require('../assets/Suscribe-1/Views.png'),
-
+  
   // SUSCRIBE 2
   Suscribe2Ebay: require('../assets/Suscribe-2/Ebay.png'),
+  Suscribe2Ebayblack: require('../assets/Suscribe-2/Ebay-black.png'),
   Suscribe2MasterCard: require('../assets/Suscribe-2/MasterCard.png'),
   Suscribe2Paso2: require('../assets/Suscribe-2/Paso-2.png'),
   Suscribe2Paypal: require('../assets/Suscribe-2/Paypal.png'),
@@ -29,4 +31,7 @@ export const images = {
   // HOME
   HomeCard1: require('../assets/Home/card1.png'),
   HomeCard2: require('../assets/Home/card2.png'),
+  
+  ArrowLeft: require('../assets/Suscribe-1/arrow-left.png'),
+
 }

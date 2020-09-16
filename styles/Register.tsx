@@ -2,13 +2,6 @@ import { StyleSheet } from 'react-native'
 import { theme } from '../constants'
 import styled from 'styled-components/native'
 
-export const HeaderBack = styled.TouchableOpacity``;
-
-export const ImagenBack = styled.Image`
-  height: 25px;
-  width: 25px;
-`;
-
 export const HeaderTitle = styled.Text`
   font-size: ${theme.sizes.h4}px;
   text-align: center;
@@ -56,7 +49,7 @@ export const ContainerBandera = styled.View`
 `;
 
 export const TextPhone = styled.Text`
-  color: ${theme.colors.secondary};
+  color: ${props => props.theme.textColor};
   padding-left:5px;
 `;
 

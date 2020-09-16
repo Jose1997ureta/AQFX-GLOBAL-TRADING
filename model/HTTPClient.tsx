@@ -1,23 +1,20 @@
 import axios from "axios";
 // import { LOCAL_STORE_AUTHORIZATION } from '../Utils/Constants/LocalStorage';
  
-const urlBase = 'https://dev.azzinformatica.com/api/v1';
+// const urlBase = 'https://dev.azzinformatica.com/api/v1';
  
-const readUrl = (url = '') =>
-  url.startsWith('http://') || url.startsWith('https://') ? url : `${urlBase}/${url}`
+// const readUrl = (url = '') =>
+//   url.startsWith('http://') || url.startsWith('https://') ? url : `${urlBase}/${url}`
 
-const get = (url = '', params = {}, headers = {}) => axios.get(readUrl(url), {
+const get = (url = '', params = {}, headers = {}) => axios.get('https://dev.azzinformatica.com/api/v1/noticia/listar', {
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json', 
-     
+    'Content-Type': 'application/json',
     ...headers
   },
   params: {
-
     ...params
   },
-
 })
 
 // const getAuth = (url = '', params = {}, headers = {}) => axios.get(readUrl(url), {
@@ -62,18 +59,18 @@ const get = (url = '', params = {}, headers = {}) => axios.get(readUrl(url), {
 
 // })
 
-const post = (url = '', body = {}, params = {}, headers = {}) => axios.post(readUrl(url), body, {
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    ...headers
-  },
-  params: {
-    ...params
-  }
+// const post = (url = '', body = {}, params = {}, headers = {}) => axios.post(readUrl(url), body, {
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json',
+//     ...headers
+//   },
+//   params: {
+//     ...params
+//   }
 
 
-})
+// })
 // const patch = (url = '', body = {}, params = {}, headers = {}) => axios.patch(readUrl(url), body, {
 //   headers: {
 //     Accept: 'application/json',
@@ -105,7 +102,7 @@ const post = (url = '', body = {}, params = {}, headers = {}) => axios.post(read
 export default{
   get,
   // postAuth,
-  post,
+  // post,
   // put,
   // getAuth ,
   // patch

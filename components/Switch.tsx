@@ -4,7 +4,7 @@ import {View ,Switch,StyleSheet } from 'react-native';
 import { colors } from '../constants/theme'
 import { Base } from '../styles/Base'
 
-export const HeaderNavigation = ({ children }) : Promise<> => {
+export const HeaderNavigation = ({ children }) => {
 
   const [isEnabled, setIsEnabled] = useState(false);
 

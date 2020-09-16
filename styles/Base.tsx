@@ -8,6 +8,10 @@ export const Container = styled.View`
   background-color: ${props => props.theme.background};
 `;
 
+export const PaddingContainer = styled.View`
+  padding: 0 20px;
+`;
+
 export const ContainerButton = styled.View`
   width: 100%;
   align-items: center;
@@ -33,6 +37,19 @@ export const Between = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const ScrollContainer = styled.ScrollView`
+  /* background-color: #fff;
+  flex: 1; */
+  /* justify-content: center; */
+`;
+
+export const HeaderBack = styled.TouchableOpacity``;
+
+export const ImagenBack = styled.Image`
+  height: 25px;
+  width: 25px;
 `;
 
 export const Base = StyleSheet.create({
@@ -107,7 +124,7 @@ export const Base = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   w100: {

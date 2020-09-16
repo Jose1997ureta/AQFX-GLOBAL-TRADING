@@ -6,6 +6,10 @@ export {
   Center, 
   W100, 
   Between,
+  ScrollContainer,
+  HeaderBack,
+  ImagenBack,
+  PaddingContainer,
 } from './Base'
 
 export { 
@@ -33,9 +37,7 @@ export {
 } from './Login'
 
 export {
-  HeaderBack,
   RegisterStyle,
-  ImagenBack,
   HeaderTitle,
   ButtonAvatar,
   Avatar,
@@ -67,6 +69,18 @@ export {
   NoticeHomeTitle,
   NoticeHomeTitleLine,
 } from './Home'
+
+export {
+  NoticeContainer,
+  NoticeTitle,
+  NoticeImageContainer,
+  NoticeImage,
+  NoticeSubtitle,
+  NoticeDescription,
+  NoticeLinkBlack,
+  NoticeLink,
+
+} from './Notice'
 
 // export { HomeStyle } from './Home'
 export { ThemeDark, ThemeLight } from './theme'

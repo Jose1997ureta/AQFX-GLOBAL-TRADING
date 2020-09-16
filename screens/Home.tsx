@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
-import { View, StatusBar, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
+import { View, StatusBar, SafeAreaView, ActivityIndicator, FlatList, Dimensions, ScrollView, VirtualizedList } from 'react-native';
 import { MaterialIcons }  from '@expo/vector-icons'
 import { ThemeProvider } from 'styled-components'
-import { HeaderNavigation, ListNotice } from '../components'
+import { HeaderNavigation, ListNotice, Loading } from '../components'
 import { images as image, theme } from '../constants'
-import { ListNoticeAll } from '../model/API_Noticias'
+import { NoticeAll } from '../model/API_Noticias'
 
 import { 
   Base,
@@ -13,6 +13,7 @@ import {
   Row,
   W100,
   Between,
+  ScrollContainer,
   
   // HOME
   TitleHome,
@@ -33,24 +34,21 @@ import {
   ThemeDark,
 } from '../styles'
 
+const height = Dimensions.get('window').height;
+
 export default ({ navigation }) => {
 
-  useEffect(() => {
-    getNoticiasAll();
-  }, [])
- 
-  const getNoticiasAll = async () => {
-    // const co = await ListNoticeAll()
-    // console.log(co);
-  }
+  const {loading, list} = NoticeAll();
 
   return (
     <ThemeProvider theme={ThemeLight}>
       <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
-      <ScrollView>
-        <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
+        <ScrollView>
+          { loading ? 
+          <Loading /> :
+          <>
           <Container>
-
             <HeaderNavigation>
               <View></View>
             </HeaderNavigation>
@@ -59,7 +57,7 @@ export default ({ navigation }) => {
               <TitleHome>En Vivo</TitleHome>
               <PuntoRed></PuntoRed>
             </Row>
-         
+        
             <Between style={{marginTop: theme.sizes.margin}}>
               <CardHome>
                 <CardHomeImage source={image.images.HomeCard1}/>
@@ -84,17 +82,21 @@ export default ({ navigation }) => {
             </Between>
 
             <Center>
-              <Separate/>
-            </Center>
+            <Separate/>
+          </Center>
           </Container>
-
+      
           <NoticeHomeContainer>
             <NoticeHomeTitle>Noticias</NoticeHomeTitle>
             <NoticeHomeTitleLine></NoticeHomeTitleLine>
-            <ListNotice />
+            { list.map(lista => (
+              <ListNotice lista={lista} onPress={()=> navigation.navigate('Notice',{idNoticia: lista.id})}/>
+            ))}
           </NoticeHomeContainer>
-        </SafeAreaView>
-      </ScrollView>
+          </>
+          }
+        </ScrollView>
+      </SafeAreaView>
     </ThemeProvider>
   )
 }
