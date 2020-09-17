@@ -1,29 +1,47 @@
-import React, { useState } from "react";
-import {View ,Switch,StyleSheet } from 'react-native';
+import React, { useEffect, useState, useReducer } from "react";
+import {View ,Switch, AsyncStorage, Text } from 'react-native';
 
-import { colors } from '../constants/theme'
+import { theme } from '../constants'
 import { Base } from '../styles/Base'
 
 export const HeaderNavigation = ({ children }) => {
+  useEffect(() => {
+    getTheme()
+  }, [])
+  
+  const [isEnabled, setIsEnabled] = useState(true);
 
-  const [isEnabled, setIsEnabled] = useState(false);
+  const getTheme = async () => {
+    const { modo } = await theme.themeView();
+    if(modo == 'ThemeDark'){
+      setIsEnabled(true);
+    }else{
+      setIsEnabled(false);
+    }
 
-  const toggleSwitch = () => {
+    console.log(modo, isEnabled)
+  }
+
+  const toggleSwitch = async () => {
     setIsEnabled(previousState => !previousState);
-    console.log(isEnabled)
+    let themeView = ''
+    isEnabled ? themeView = 'ThemeLight': themeView = 'ThemeDark'
+
+    AsyncStorage.setItem('themeView', themeView)
+
+    console.log(isEnabled, themeView)
   }
 
   return (
     <View style={Base.headerNavigation}>
       {children}
       <Switch
-        trackColor={{ false: colors.secondary , true: "#eee" }}
-        thumbColor={isEnabled ? colors.secondary : '#fff'}
+        trackColor={{ true: '#fff' , false: "#000" }}
+        thumbColor={!isEnabled ? '#fff' : '#000'}
         ios_backgroundColor="#3e3e3e"
         onValueChange={toggleSwitch}
         value={isEnabled}
       /> 
-      
     </View>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Image, Text, SafeAreaView, ScrollView, StatusBar, Dimensions} from 'react-native';
 import { Formik, useFormikContext } from 'formik'
 import * as Yup from 'yup'
@@ -38,12 +38,16 @@ import {
 const height = Dimensions.get('window').height
 
 export const LoginScreen = ({ navigation }) => {
+  const [modoView, setModoView] = useState('')
 
-  const [isEnabled, setIsEnabled] = useState(false);
+  useEffect(() => {
+    getSession()
+  }, [])
 
-  const toggleSwitch = () => {
-    setIsEnabled(previousState => !previousState);
-    console.log(isEnabled)
+  const getSession = async () => {
+    const {modo} = await theme.themeView();
+    setModoView(modo);
+    console.log(modoView)
   }
 
   const handleSubmit = ( x: Object ) => { 
@@ -84,7 +88,7 @@ export const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <ThemeProvider theme={ThemeDark}>
+    <ThemeProvider theme={modoView == 'ThemeLight' ? ThemeLight : ThemeDark}>
       <ScrollView>
         <ImageBackground source={images.images.LoginFondo}>
           <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
@@ -117,7 +121,7 @@ export const LoginScreen = ({ navigation }) => {
                     >
                       <InputsForm />
                     </Formik>
-                    <SuscribeContainer onPress={()=> navigation.navigate('Screens')}>
+                    <SuscribeContainer onPress={()=> navigation.navigate('Suscribe1')}>
                       <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
                     </SuscribeContainer>
                   </W100>

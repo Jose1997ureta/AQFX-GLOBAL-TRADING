@@ -1,4 +1,4 @@
-import * as theme from './theme';
+import * as theme from './var';
 import * as images from './images';
 
 export {

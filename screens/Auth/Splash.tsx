@@ -1,31 +1,29 @@
-import React, { useEffect } from 'react'
-import {ActivityIndicator, AsyncStorage } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
-import { images as image } from '../../constants' 
+import { images as image, theme } from '../../constants' 
 import { ThemeProvider } from 'styled-components'
 import { ThemeLight, ThemeDark } from '../../styles'
 
 export const SplashScreen = ({ navigation } ) => {
+  const [modoView, setModoView] = useState('')
+
   useEffect(() => {
     getSession()
   }, [])
 
 
   const getSession = async () => {
-    const session = await AsyncStorage.getItem('token')
-    // const themeView = await AsyncStorage.getItem('themeView')
+    const {session, modo} = await theme.themeView();
+    setModoView(modo);
 
-    // if(themeView != 'ThemeLight'){
-
-    // }
     setTimeout(() => {
       navigation.navigate(session ? 'Home' : 'AuthStack')
     }, 3000)
-    // console.log(session)
   }
 
   return ( 
-    <ThemeProvider theme={ThemeLight}>
+    <ThemeProvider theme={ modoView == 'ThemeLight' ? ThemeLight : ThemeDark}>
       <SplashContainer>
         <Splash source={image.images.SplashFondo}>
           <SpashImage source={image.images.SplashLogo}/>
@@ -33,7 +31,6 @@ export const SplashScreen = ({ navigation } ) => {
         </Splash>
       </SplashContainer>
     </ThemeProvider>
-    
   )
 }
 

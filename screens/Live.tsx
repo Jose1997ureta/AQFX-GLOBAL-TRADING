@@ -41,7 +41,7 @@ export const LiveScreen = ({ navigation }) => {
               </HeaderNavigation>
             </PaddingContainer>
             {list.map(lista => (
-              <ListLive key={lista.id} lista={lista}/>
+              <ListLive key={lista.titulo} lista={lista}/>
             ))}
           </LiveContainer>
         }

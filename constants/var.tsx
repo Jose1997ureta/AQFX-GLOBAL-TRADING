@@ -1,3 +1,15 @@
+import { AsyncStorage } from 'react-native'
+
+export const themeView = async() => {
+  let modo = await AsyncStorage.getItem('themeView');
+  let session = await AsyncStorage.getItem('token');
+  if(modo == null)[
+    modo = 'ThemeLight'
+  ]
+
+  return {session, modo};
+}
+
 export const colors = { 
   primary: '#28A070',
   secondary: '#4A4A4D',
