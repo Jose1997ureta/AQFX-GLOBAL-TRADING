@@ -4,6 +4,7 @@ import { createStackNavigator, CardStyleInterpolators } from 'react-navigation-s
 // SCREENS
 import HomeScreen from '../Home'
 import { NoticeScreen } from '../Notice'
+import { LiveScreen } from '../Live'
 // import PostScreen from '../Post'
 import CursoScreen from '../Cursos'
 import DetalleCursoScreen from '../DetalleCurso'
@@ -11,6 +12,7 @@ import DetalleCursoScreen from '../DetalleCurso'
 export const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Notice: NoticeScreen,
+  Live: LiveScreen,
 },{
   initialRouteName: 'Home',
   headerMode: 'none',

@@ -26,6 +26,7 @@ export const TabNavigator = createBottomTabNavigator({
     }
   }
 }, {
+  initialRouteName: 'Home',
   tabBarOptions:{
     showLabel: false,
     activeTintColor: theme.colors.primary,

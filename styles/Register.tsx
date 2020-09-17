@@ -89,15 +89,15 @@ export const HeaderMontoText = styled.Text`
 
 export const Card = styled.View`
   width: 100%;
-  background-color: #fff;
+  background-color: ${props => props.theme.backgrundDark};
   border-radius: ${theme.sizes.radiusInput}px;
   padding: 73px 16px;
   margin-bottom: 56px;
 `;
 
 export const CardText = styled.Text`
-  font-size: ${theme.sizes.h3}px;
-  color: ${theme.colors.secondary};
+  font-size: ${theme.sizes.h1}px;
+  color: ${props => props.theme.textColorDark};
   font-weight: ${theme.weight.bold};
 `;
 

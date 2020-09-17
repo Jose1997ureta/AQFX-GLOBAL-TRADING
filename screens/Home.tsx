@@ -41,7 +41,7 @@ export default ({ navigation }) => {
   const {loading, list} = NoticeAll();
 
   return (
-    <ThemeProvider theme={ThemeLight}>
+    <ThemeProvider theme={ThemeDark}>
       <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
       <SafeAreaView style={{flex: 1}}>
         <ScrollView>
@@ -53,13 +53,13 @@ export default ({ navigation }) => {
               <View></View>
             </HeaderNavigation>
 
-            <Row>
+            <Row style={{marginTop: theme.sizes.margin}}>
               <TitleHome>En Vivo</TitleHome>
               <PuntoRed></PuntoRed>
             </Row>
         
             <Between style={{marginTop: theme.sizes.margin}}>
-              <CardHome>
+              <CardHome onPress={() => navigation.navigate('Live')}>
                 <CardHomeImage source={image.images.HomeCard1}/>
                 <CardHomeContent>
                   <CardHomeContentText>Título de la live...</CardHomeContentText>
@@ -90,7 +90,7 @@ export default ({ navigation }) => {
             <NoticeHomeTitle>Noticias</NoticeHomeTitle>
             <NoticeHomeTitleLine></NoticeHomeTitleLine>
             { list.map(lista => (
-              <ListNotice lista={lista} onPress={()=> navigation.navigate('Notice',{idNoticia: lista.id})}/>
+              <ListNotice key={lista.id} lista={lista} navigation={navigation}/>
             ))}
           </NoticeHomeContainer>
           </>

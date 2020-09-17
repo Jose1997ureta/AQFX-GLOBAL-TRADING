@@ -31,12 +31,14 @@ import React, {useState, useEffect} from 'react'
 
 // }
 
+
+// NOTICIAS
 export const NoticeAll = () => {
   const [list, setList] = useState([])
   const [loading, setLoaging] = useState(true)
   
   const getNoticeAll = async () => {
-    const response = await fetch("https://dev.azzinformatica.com/api/v1/noticia/listar")
+    const response = await fetch("https://dev.azzinformatica.com/api/v1/noticia/listar_app")
     const rpta = await response.json()
     setLoaging(false)
     setList(rpta.data)
@@ -62,6 +64,25 @@ export const NoticeAllId = ( id: number) => {
   
   useEffect(() => {
     getNoticeAllId()
+  },[])
+
+  return { loading, list }
+}
+
+// LIVE
+export const LiveAll = () => {
+  const [list, setList] = useState([])
+  const [loading, setLoaging] = useState(true)
+  
+  const getNoticeAll = async () => {
+    const response = await fetch("https://dev.azzinformatica.com/api/v1/en_vivo/listar_app")
+    const rpta = await response.json()
+    setLoaging(false)
+    setList(rpta.data)
+  }
+  
+  useEffect(() => {
+    getNoticeAll()
   },[])
 
   return { loading, list }

@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react'
-import {StyleSheet, View, ActivityIndicator, AsyncStorage } from 'react-native'
+import {ActivityIndicator, AsyncStorage } from 'react-native'
+import styled from 'styled-components/native'
+import { images as image } from '../../constants' 
+import { ThemeProvider } from 'styled-components'
+import { ThemeLight, ThemeDark } from '../../styles'
 
-export const LoadingScreen = ({ navigation } ) => {
+export const SplashScreen = ({ navigation } ) => {
   useEffect(() => {
     getSession()
   }, [])
@@ -9,21 +13,43 @@ export const LoadingScreen = ({ navigation } ) => {
 
   const getSession = async () => {
     const session = await AsyncStorage.getItem('token')
-    navigation.navigate(session ? 'Home' : 'AuthStack')
-    console.log(session)
+    // const themeView = await AsyncStorage.getItem('themeView')
+
+    // if(themeView != 'ThemeLight'){
+
+    // }
+    setTimeout(() => {
+      navigation.navigate(session ? 'Home' : 'AuthStack')
+    }, 3000)
+    // console.log(session)
   }
 
   return ( 
-    <View style={styles.container}>
-      <ActivityIndicator size='large' color='red' />
-    </View>
+    <ThemeProvider theme={ThemeLight}>
+      <SplashContainer>
+        <Splash source={image.images.SplashFondo}>
+          <SpashImage source={image.images.SplashLogo}/>
+          <ActivityIndicator size='large' color='#fff' />
+        </Splash>
+      </SplashContainer>
+    </ThemeProvider>
+    
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
+const Splash = styled.ImageBackground`
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SplashContainer = styled.View`
+  flex: 1;
+  width: 100%;
+  background-color: ${props => props.theme.backgroundPrimary};
+`;
+
+const SpashImage = styled.Image`
+  margin-bottom: 50px;
+`;

@@ -5,12 +5,8 @@ import { HeaderNavigation, Loading } from '../components'
 import { images as image, theme } from '../constants'
 import { NoticeAllId } from '../model/API_Noticias'
 import { 
-  Base,
   Container,
-  Center,
   Row,
-  W100,
-  Between,
   HeaderBack,
   ImagenBack,
   PaddingContainer,
@@ -35,7 +31,7 @@ export const NoticeScreen =  ({navigation}) => {
   const { loading, list } = NoticeAllId(idNoticia)
 
   return (
-    <ThemeProvider theme={ThemeLight}>
+    <ThemeProvider theme={ThemeDark}>
       <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
       <SafeAreaView style={{flex: 1}}>
       { loading ? 
@@ -48,7 +44,7 @@ export const NoticeScreen =  ({navigation}) => {
                 <ImagenBack source={image.images.ArrowLeft} />
               </HeaderBack>
             </HeaderNavigation>
-            <NoticeTitle>{list.titulo}</NoticeTitle>
+            <NoticeTitle>Noticia</NoticeTitle>
           </PaddingContainer>
         </NoticeContainer>
         <Container>

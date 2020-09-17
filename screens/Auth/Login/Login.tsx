@@ -117,7 +117,7 @@ export const LoginScreen = ({ navigation }) => {
                     >
                       <InputsForm />
                     </Formik>
-                    <SuscribeContainer onPress={()=> navigation.navigate('Suscribe1')}>
+                    <SuscribeContainer onPress={()=> navigation.navigate('Screens')}>
                       <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
                     </SuscribeContainer>
                   </W100>

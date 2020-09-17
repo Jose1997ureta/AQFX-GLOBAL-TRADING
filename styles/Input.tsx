@@ -10,7 +10,7 @@ export const Input = styled.TextInput`
   padding: ${theme.sizes.padding}px;
   border-radius: ${theme.sizes.radiusInput}px;
   border: 1px solid ${props => props.theme.borderButton};
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.textColorDark};
 `;
 
 export const InputItem = styled.View`

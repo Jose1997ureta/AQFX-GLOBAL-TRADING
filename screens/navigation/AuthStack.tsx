@@ -1,8 +1,9 @@
-import { createSwitchNavigator} from 'react-navigation'
+import { createAppContainer, createSwitchNavigator} from 'react-navigation'
+// import { createAppContainer} from 'react-navigation'
 import { createStackNavigator, CardStyleInterpolators } from 'react-navigation-stack'
 
 // SCREENS
-import { LoadingScreen } from '../Auth/Splash'
+import { SplashScreen } from '../Auth/Splash'
 import { LoginScreen } from '../Auth/Login/Login'
 import { Suscribe1Screen } from '../Auth/Register/Suscribe-1'
 import { Suscribe2Screen } from '../Auth/Register/Suscribe-2'
@@ -30,10 +31,12 @@ export const AuthStack = createStackNavigator({
 })
 
 export const BaseStack = createSwitchNavigator({
-  Loading: LoadingScreen,
+  Splash: SplashScreen,
   AuthStack: AuthStack,
   Scrrens: DrawerNavigation,
 },
 {
-  initialRouteName: 'Loading',
+  initialRouteName: 'Splash',
 })
+
+// export default createAppContainer(BaseStack)

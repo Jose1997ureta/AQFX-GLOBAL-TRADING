@@ -51,7 +51,7 @@ export const Suscribe3Screen =  ({ navigation }) => {
   }
 
   return (
-    <ThemeProvider theme={ThemeLight}>
+    <ThemeProvider theme={ThemeDark}>
       <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
       <ScrollView>
         <SafeAreaView>

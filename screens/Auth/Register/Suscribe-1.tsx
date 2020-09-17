@@ -156,7 +156,6 @@ export const Suscribe1Screen =  ({ navigation }) => {
       navigation.navigate('Suscribe2', { datosUsuario: usuario })
       console.log(usuario)
     }
-    // console.log(x)
   }
 
   return (
