@@ -31,8 +31,8 @@ export const NoticeScreen =  ({navigation}) => {
   const { loading, list } = NoticeAllId(idNoticia)
 
   return (
-    <ThemeProvider theme={ThemeDark}>
-      <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
+    // <ThemeProvider theme={ThemeDark}>
+    //   <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
       <SafeAreaView style={{flex: 1}}>
       { loading ? 
         <Loading/> :
@@ -61,6 +61,6 @@ export const NoticeScreen =  ({navigation}) => {
         </>
       }
       </SafeAreaView>
-    </ThemeProvider>
+    // </ThemeProvider>
   )
 }

@@ -1,13 +1,29 @@
 import { AsyncStorage } from 'react-native'
 
-export const themeView = async() => {
-  let modo = await AsyncStorage.getItem('themeView');
+export const getSession = async() => {
   let session = await AsyncStorage.getItem('token');
-  if(modo == null)[
-    modo = 'ThemeLight'
-  ]
+  return session;
+}
 
-  return {session, modo};
+export const getFormatDate = (date: Date) =>{
+  const fecha = new Date(date) 
+    const day = fecha.getDate()
+    const month = fecha.getMonth() + 1
+    const year = fecha.getFullYear()
+    let m = '', d = ''
+    if(month < 10) {
+      m = '0' + month
+    }else{
+      m = month.toString()
+    }
+
+    if(day < 10) {
+      d = '0' + day
+    }else{
+      d = day.toString()
+    }
+
+    return `${d}/${m}/${year}`
 }
 
 export const colors = { 

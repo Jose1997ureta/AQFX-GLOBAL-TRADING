@@ -1,5 +1,4 @@
 import { createAppContainer, createSwitchNavigator} from 'react-navigation'
-// import { createAppContainer} from 'react-navigation'
 import { createStackNavigator, CardStyleInterpolators } from 'react-navigation-stack'
 
 // SCREENS
@@ -24,10 +23,6 @@ export const AuthStack = createStackNavigator({
     gestureDirection: 'horizontal',
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   },
-  // navigationOptions: {
-  //   gesturesEnabled: true,
-  //   drawerLockMode: 'unlocked'
-  // }
 })
 
 export const BaseStack = createSwitchNavigator({
@@ -39,4 +34,4 @@ export const BaseStack = createSwitchNavigator({
   initialRouteName: 'Splash',
 })
 
-// export default createAppContainer(BaseStack)
+export default createAppContainer(BaseStack)

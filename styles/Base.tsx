@@ -118,21 +118,25 @@ export const Base = StyleSheet.create({
     lineHeight: 18,
     marginTop: 30,
   },
-
-  // HEADER NAVIGATION
-  headerNavigation: {
-    marginTop: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-
+  
   w100: {
     width: '100%'
   },
 
   w50:{
     width: '48%',
+  },
+
+  borderShadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   }
 
 })

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react"
 import { View, Image, Text, SafeAreaView, ScrollView, StatusBar, Dimensions} from 'react-native';
 import { Formik, useFormikContext } from 'formik'
 import * as Yup from 'yup'
-import { ThemeProvider } from 'styled-components'
-
 import { images, theme } from '../../../constants'
 import { InputLogin, HeaderNavigation, TextFooter } from '../../../components'
 import { 
@@ -28,27 +26,12 @@ import {
   ButtonSecondary,
   TextButtonSecondary,
   ButtonStyle,
-
-  // THEME
-  ThemeDark,
-  ThemeLight,
   
 } from '../../../styles'
 
 const height = Dimensions.get('window').height
 
 export const LoginScreen = ({ navigation }) => {
-  const [modoView, setModoView] = useState('')
-
-  useEffect(() => {
-    getSession()
-  }, [])
-
-  const getSession = async () => {
-    const {modo} = await theme.themeView();
-    setModoView(modo);
-    console.log(modoView)
-  }
 
   const handleSubmit = ( x: Object ) => { 
     x ? navigation.navigate('Screens') : null
@@ -88,51 +71,47 @@ export const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <ThemeProvider theme={modoView == 'ThemeLight' ? ThemeLight : ThemeDark}>
+    <SafeAreaView style={{flex: 1}}>
       <ScrollView>
         <ImageBackground source={images.images.LoginFondo}>
           <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
-            <SafeAreaView style={{flex: 1}}>
-              <Container style={[Base.between, {height: height}]}>
-                <View>
-                  
-                  <HeaderNavigation>
-                    <View></View>
-                  </HeaderNavigation>
-
-                  <TextLogin>Bienvenido</TextLogin>
-                  
-                  <ImageContainer>
-                    <Image source={images.images.LoginLogo} />
-                  </ImageContainer>
-                  
-                  <W100>
-                    <Formik
-                      validationSchema={ Yup.object({
-                        user: Yup
-                          .string()
-                          .required('El usuario es requerido'),
-                        password: Yup
-                          .string()
-                          .required('El password es requerido')
-                      })}
-                      initialValues={{  user:'', password:''}}
-                      onSubmit={(x) => handleSubmit(x)}
-                    >
-                      <InputsForm />
-                    </Formik>
-                    <SuscribeContainer onPress={()=> navigation.navigate('Suscribe1')}>
-                      <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
-                    </SuscribeContainer>
-                  </W100>
-                </View>
+            <Container style={[Base.between, {height: height}]}>
+              <View>
+                <HeaderNavigation>
+                  <View></View>
+                </HeaderNavigation>
+                <TextLogin>Bienvenido</TextLogin>
                 
-                <TextFooter/>
+                <ImageContainer>
+                  <Image source={images.images.LoginLogo} />
+                </ImageContainer>
                 
-              </Container>
-            </SafeAreaView>
+                <W100>
+                  <Formik
+                    validationSchema={ Yup.object({
+                      user: Yup
+                        .string()
+                        .required('El usuario es requerido'),
+                      password: Yup
+                        .string()
+                        .required('El password es requerido')
+                    })}
+                    initialValues={{  user:'', password:''}}
+                    onSubmit={(x) => handleSubmit(x)}
+                  >
+                    <InputsForm />
+                  </Formik>
+                  <SuscribeContainer onPress={()=> navigation.navigate('Screens')}>
+                    <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
+                  </SuscribeContainer>
+                </W100>
+              </View>
+              
+              <TextFooter/>
+              
+            </Container>
         </ImageBackground>
       </ScrollView>
-    </ThemeProvider>
+    </SafeAreaView>
   )
 }

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { Image, SafeAreaView, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker'
 import { Formik, useFormikContext } from 'formik'
 import { Ionicons } from '@expo/vector-icons'
 import * as Yup from 'yup'
-import { ThemeProvider } from 'styled-components'
 
 import { images as image, theme} from '../../../constants'
 import  UserPermisions from '../../../model/Permissions' 
@@ -36,9 +35,6 @@ import {
   ButtonStyle,
   TextButtonPrimary,
   
-  // THEME
-  ThemeLight,
-  ThemeDark,
   
 } from '../../../styles'
 
@@ -159,80 +155,77 @@ export const Suscribe1Screen =  ({ navigation }) => {
   }
 
   return (
-    <ThemeProvider theme={ThemeDark}>
-      <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
+    <SafeAreaView>
       <ScrollView>
-        <SafeAreaView>
-          <Container>
+        <Container>
 
-            <HeaderNavigation>
-              <HeaderBack onPress={()=> navigation.navigate('Login')}>
-                <ImagenBack source={image.images.Suscribe1ArrowLeft} />
-              </HeaderBack>
-            </HeaderNavigation>
+          <HeaderNavigation>
+            <HeaderBack onPress={()=> navigation.navigate('Login')}>
+              <ImagenBack source={image.images.Suscribe1ArrowLeft} />
+            </HeaderBack>
+          </HeaderNavigation>
 
-            <HeaderTitle>¿Listo para empezar a crear tu cuenta?</HeaderTitle>
-            <Center style={Base.alignItemsCenter} >
-              <Image source={image.images.Suscribe1Paso1} />
-            </Center>
+          <HeaderTitle>¿Listo para empezar a crear tu cuenta?</HeaderTitle>
+          <Center style={Base.alignItemsCenter} >
+            <Image source={image.images.Suscribe1Paso1} />
+          </Center>
 
-            <Center>
-              <ButtonAvatar onPress={() => handlerPickAvatar()} style={RegisterStyle.ButtonAvatarShadow}>
-                { imagePerfil !== '' ? 
-                  <Avatar source={{uri: imagePerfil}} /> : null
-                }
-                <Camare source={image.images.Suscribe1Camara}/>
-              </ButtonAvatar>
-            </Center>
+          <Center>
+            <ButtonAvatar onPress={() => handlerPickAvatar()} style={RegisterStyle.ButtonAvatarShadow}>
+              { imagePerfil !== '' ? 
+                <Avatar source={{uri: imagePerfil}} /> : null
+              }
+              <Camare source={image.images.Suscribe1Camara}/>
+            </ButtonAvatar>
+          </Center>
 
-            <W100>
-              <Formik
-                validationSchema={ Yup.object({
-                  name: Yup
-                    .string()
-                    .required('El nombre es requerido'),
-                  lastName: Yup
-                    .string()
-                    .required('El apellido es requerido'),
-                  user: Yup
-                    .string()
-                    .required('El usuario es requerido'),
-                  email: Yup
-                    .string()
-                    .email('asas')
-                    .required('El email es requerido'),
-                  password: Yup
-                    .string()
-                    .required('El password es requerido'),
-                  repeatPassword: Yup
-                    .string()
-                    .required('El password es requerido')
-                    .oneOf([Yup.ref('password'), null], 'Las contraseñas no coinciden'),
-                  phone: Yup
-                    .string()
-                    .min(9, 'El formato incorrecto')
-                    .required('El número es requerido')
-                })}
-                initialValues={{ 
-                  name:'',
-                  lastName:'', 
-                  user:'',
-                  email:'', 
-                  password:'',
-                  repeatPassword:'',
-                  phone:''
-                }}
-                onSubmit={x => saveInformation(x) }
-              >
-                <InputsForm />
-              </Formik>
-            </W100>
-            
-            <TextFooter/>
-            
-          </Container>
-        </SafeAreaView>
+          <W100>
+            <Formik
+              validationSchema={ Yup.object({
+                name: Yup
+                  .string()
+                  .required('El nombre es requerido'),
+                lastName: Yup
+                  .string()
+                  .required('El apellido es requerido'),
+                user: Yup
+                  .string()
+                  .required('El usuario es requerido'),
+                email: Yup
+                  .string()
+                  .email('asas')
+                  .required('El email es requerido'),
+                password: Yup
+                  .string()
+                  .required('El password es requerido'),
+                repeatPassword: Yup
+                  .string()
+                  .required('El password es requerido')
+                  .oneOf([Yup.ref('password'), null], 'Las contraseñas no coinciden'),
+                phone: Yup
+                  .string()
+                  .min(9, 'El formato incorrecto')
+                  .required('El número es requerido')
+              })}
+              initialValues={{ 
+                name:'',
+                lastName:'', 
+                user:'',
+                email:'', 
+                password:'',
+                repeatPassword:'',
+                phone:''
+              }}
+              onSubmit={x => saveInformation(x) }
+            >
+              <InputsForm />
+            </Formik>
+          </W100>
+          
+          <TextFooter/>
+          
+        </Container>
       </ScrollView>
-    </ThemeProvider>
+    </SafeAreaView>
   )
 }

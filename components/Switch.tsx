@@ -1,47 +1,51 @@
-import React, { useEffect, useState, useReducer } from "react";
-import {View ,Switch, AsyncStorage, Text } from 'react-native';
-
+import React, { useEffect, useState } from "react";
+import {Switch, AsyncStorage, View } from 'react-native';
+import styled from 'styled-components/native'
 import { theme } from '../constants'
-import { Base } from '../styles/Base'
+
+import { useStateValue } from '../screens/states/ThemeState'
 
 export const HeaderNavigation = ({ children }) => {
+  const [darkmode, setDarkmode] = useState(false);
+  const [ , dispach ] = useStateValue();
+
   useEffect(() => {
-    getTheme()
-  }, [])
-  
-  const [isEnabled, setIsEnabled] = useState(true);
+    async function getInitialState() {
+      const state = await AsyncStorage.getItem("DarkModeKey");
+      if (state === "true") {
+        setDarkmode(true);
+        return;
+      }
 
-  const getTheme = async () => {
-    const { modo } = await theme.themeView();
-    if(modo == 'ThemeDark'){
-      setIsEnabled(true);
-    }else{
-      setIsEnabled(false);
+      setDarkmode(false);
     }
+    getInitialState();
+  }, []);
 
-    console.log(modo, isEnabled)
-  }
 
-  const toggleSwitch = async () => {
-    setIsEnabled(previousState => !previousState);
-    let themeView = ''
-    isEnabled ? themeView = 'ThemeLight': themeView = 'ThemeDark'
-
-    AsyncStorage.setItem('themeView', themeView)
-
-    console.log(isEnabled, themeView)
+  function handleChange() {
+    dispach({
+      type: !darkmode ? "enableDarkMode" : "disableDarkMode"
+    });
+    setDarkmode(!darkmode);
   }
 
   return (
-    <View style={Base.headerNavigation}>
+    <Navigation>
       {children}
       <Switch
-        trackColor={{ true: '#fff' , false: "#000" }}
-        thumbColor={!isEnabled ? '#fff' : '#000'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      /> 
-    </View>
+        value={darkmode}
+        onValueChange={handleChange}
+        thumbColor={!darkmode ? '#fff' : theme.colors.secondary}
+        trackColor={{ true: '#fff' , false: theme.colors.secondary }}
+      />
+    </Navigation> 
   )
 }
+
+const Navigation = styled.View`
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;

@@ -6,6 +6,7 @@ export const ThemeLight = {
   backgroundPrimary: theme.colors.primary,
   textColor:  theme.colors.secondary,
   textColorDark: theme.colors.secondary,
+  textColorPrimary: '#fff',
 
   backgroundButtonLogin: '#fff',
   TextButtonLogin: theme.colors.secondary,
@@ -17,6 +18,10 @@ export const ThemeLight = {
   backgroundInputLogin: theme.colors.third,
 
   loading: '#fff',
+
+  statusBarStyle: "dark-content",
+
+  progressCurso: theme.colors.secondary,
 }
 
 export const ThemeDark = {
@@ -26,6 +31,7 @@ export const ThemeDark = {
 
   textColor: '#FFF',
   textColorDark: theme.colors.textLight,
+  textColorPrimary: theme.colors.primary,
 
   backgroundButtonLogin: '#6B6C6F',
   TextButtonLogin: '#CCC',
@@ -37,4 +43,8 @@ export const ThemeDark = {
   backgroundInputLogin: '#6B6C6F',
 
   loading: theme.colors.primary,
+
+  statusBarStyle: "light-content",
+
+  progressCurso: theme.colors.primary,
 }

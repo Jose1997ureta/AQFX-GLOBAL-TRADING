@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 import { images as image, theme } from '../../constants' 
-import { ThemeProvider } from 'styled-components'
-import { ThemeLight, ThemeDark } from '../../styles'
 
 export const SplashScreen = ({ navigation } ) => {
-  const [modoView, setModoView] = useState('')
 
   useEffect(() => {
     getSession()
@@ -14,23 +11,19 @@ export const SplashScreen = ({ navigation } ) => {
 
 
   const getSession = async () => {
-    const {session, modo} = await theme.themeView();
-    setModoView(modo);
-
+    const session = await theme.getSession();
     setTimeout(() => {
       navigation.navigate(session ? 'Home' : 'AuthStack')
     }, 3000)
   }
 
   return ( 
-    <ThemeProvider theme={ modoView == 'ThemeLight' ? ThemeLight : ThemeDark}>
-      <SplashContainer>
-        <Splash source={image.images.SplashFondo}>
-          <SpashImage source={image.images.SplashLogo}/>
-          <ActivityIndicator size='large' color='#fff' />
-        </Splash>
-      </SplashContainer>
-    </ThemeProvider>
+    <SplashContainer>
+      <Splash source={image.images.SplashFondo}>
+        <SpashImage source={image.images.SplashLogo}/>
+        <ActivityIndicator size='large' color='#fff' />
+      </Splash>
+    </SplashContainer>
   )
 }
 

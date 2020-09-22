@@ -103,5 +103,31 @@ export {
 
 } from './Live'
 
-// export { HomeStyle } from './Home'
+export {
+  TitleCurso,
+  CursoContainer,
+  Curso,
+  CursoTimeLine,
+  CursoContainerImage,
+  CursoImage,
+  CursoContent,
+  CursoTitle,
+  CursoNameTeacher,
+  CursoHours,
+
+} from './Cursos'
+
+export {
+  DetalleCurso,
+  DetalleHeader,
+  TituloDetalleHeader,
+  TitleProgress,
+  ProgressContainer,
+  // NumberProgress,
+  Progress,
+  // ProgressBackground,
+  DetalleTeacher,
+  DetalleTime
+} from './DetalleCurso'
+
 export { ThemeDark, ThemeLight } from './theme'
