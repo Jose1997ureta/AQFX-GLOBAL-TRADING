@@ -123,11 +123,18 @@ export {
   TituloDetalleHeader,
   TitleProgress,
   ProgressContainer,
-  // NumberProgress,
   Progress,
-  // ProgressBackground,
   DetalleTeacher,
-  DetalleTime
+  DetalleTime,
+  CardVideoContainer,
+  CardVideo,
+  CardVideoTitle,
+  CardVideoImage,
+  CardVideoImageTime,
+  CardVideoContent,
+  CardVideoContentTitle,
+  CardVideoContentDescription,
+  CardVideoSeparate,
 } from './DetalleCurso'
 
 export { ThemeDark, ThemeLight } from './theme'

@@ -7,7 +7,7 @@ import { useStateValue } from '../screens/states/ThemeState'
 
 export const HeaderNavigation = ({ children }) => {
   const [darkmode, setDarkmode] = useState(false);
-  const [ , dispach ] = useStateValue();
+  const [ , dispach] = useStateValue();
 
   useEffect(() => {
     async function getInitialState() {

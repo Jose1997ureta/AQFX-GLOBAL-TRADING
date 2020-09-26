@@ -7,12 +7,26 @@ import React, { useState, useEffect } from "react";
 import { AsyncStorage } from "react-native";
 import { StateProvider } from "./screens/states/ThemeState";
 
-import {ThemeLight, ThemeDark} from "./styles";
+import { ThemeLight, ThemeDark } from "./styles";
 
 import Index from "./index";
 
 export default function App() {
-  const initialState = { theme: ThemeLight };
+  const initialState = { theme: ThemeLight};
+  // const [usuario, setUsuario] = useState("");
+  // // const [usuario, setUsuario] = useState({})
+  
+  // useEffect(()=> {
+  //   async function getSessions(){
+  //     let usuarioLogin = await AsyncStorage.getItem("UserLogin");
+  //     setUsuario(usuarioLogin);
+      
+  //     // console.log(usuarioLogin)
+  //   }
+    
+  //   getSessions();
+  // })
+  // const initialState = { theme: ThemeLight, user: usuario };
 
   async function updateStorage(state) {
     try {
@@ -21,6 +35,16 @@ export default function App() {
       console.log("error" + err);
     }
   }
+
+  
+  // UPDATE REEGISTER USER
+  // async function userUpdateStorage(){
+  //   try{
+  //      AsyncStorage.getItem("UserLogin");
+  //   }catch(err){
+  //     console.log("error", err)
+  //   }
+  // }
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -36,9 +60,22 @@ export default function App() {
           ...state,
           theme: ThemeLight
         };
+      // case "loginTrue":
+      //   // userUpdateStorage(true);
+      //   return{
+      //     ...state,
+      //     user: usuario
+      //   };
+      // case "loginFalse":
+      //   // userUpdateStorage(false);
+      //   return {
+      //     ...state,
+      //     user: ""
+      //   }
       default:
         return state;
     }
+    
   };
 
   return (

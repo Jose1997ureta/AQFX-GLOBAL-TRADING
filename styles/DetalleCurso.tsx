@@ -1,3 +1,4 @@
+import { ImagePropTypes } from 'react-native';
 import styled from 'styled-components/native'
 import { theme } from '../constants'
 
@@ -11,6 +12,7 @@ export const DetalleHeader = styled.View`
   padding-bottom: 18px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
+  margin-bottom: ${theme.sizes.margin}px;
 `;
 
 export const TituloDetalleHeader = styled.Text`
@@ -36,14 +38,6 @@ export const ProgressContainer = styled.View`
   align-items: center;
 `;
 
-// export const NumberProgress = styled.Text`
-//   color: #fff;
-//   font-size: ${theme.sizes.h6}px;
-//   line-height: 16px;
-//   font-weight: ${theme.weight.bold};
-//   margin-right: 10px;
-// `
-
 export const Progress = styled.View`
   flex: 1;
   background-color: #fff;
@@ -51,23 +45,80 @@ export const Progress = styled.View`
   height: 6px;
 `;
 
-// export const ProgressBackground = styled.View`
-//   background-color: ${props => props.theme.progressCurso};
-//   width: 40%;
-//   border-radius: 5px;
-//   height: 6px;
-// `;
-
 export const DetalleTeacher = styled.Text`
   font-size: ${theme.sizes.h6}px;
   line-height: 16px;
   color: #fff;
   font-weight: ${theme.weight.bold};
-`
+`;
 
 export const DetalleTime = styled.Text`
   font-size: ${theme.sizes.h6}px;
   line-height: 16px;
   color: #fff;
   font-weight: ${theme.weight.bold};
-`
+`;
+
+export const CardVideoContainer = styled.View`
+  width: 100%;
+  padding: 0 20px;
+  background-color: ${props => props.theme.background};
+`;
+
+export const CardVideo = styled.TouchableHighlight`
+  flex-direction: row;
+  background-color: ${props => props.theme.backgrundDark};
+  border-radius: 5px;
+  height: 77px;
+  width: 100%;
+  margin-bottom: 8px;
+`;
+
+export const CardVideoTitle = styled.Text`
+  font-size: ${theme.sizes.h6}px;
+  line-height: ${theme.sizes.h6}px;
+  color: ${props => props.theme.textColor};
+  font-weight: ${theme.weight.bold};
+  margin-bottom: 4px;
+`;
+
+export const CardVideoImage = styled.View`
+  border-radius: 5px;
+  background-color: #eee;
+  width: 115px;
+  position: relative;
+`;
+
+export const CardVideoImageTime = styled.Text`
+  position: absolute;
+  bottom: 3px;
+  right: 6px;
+  color: #fff;
+  font-weight: ${theme.weight.bold};
+`;
+
+export const CardVideoContent = styled.View`
+  padding: 5px 10px;
+  flex: 1;
+`;
+
+export const CardVideoContentTitle = styled.Text`
+  color: ${theme.colors.primary};
+  font-size: ${theme.sizes.h6}px;
+  margin-bottom: 7px;
+  font-weight: ${theme.weight.bold};
+  line-height: ${theme.sizes.h6}px;
+`;
+
+export const CardVideoContentDescription = styled.Text`
+  color: ${props => props.theme.textColor};
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: ${theme.weight.bold};
+`;
+
+export const CardVideoSeparate = styled.View`
+  width: 100%;
+  height: 3px;
+  background-color: ${theme.colors.primary};
+`;

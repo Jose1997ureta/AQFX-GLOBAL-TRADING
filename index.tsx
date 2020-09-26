@@ -21,15 +21,31 @@ const Index = () => {
   useEffect(() => {
     async function getStoregetDarkMode() {
       const darkModeKey = await AsyncStorage.getItem("DarkModeKey");
+      // const usuarioToken = await AsyncStorage.getItem("UserLogin");
       if (darkModeKey === "true") {
         dispach({
           type: "enableDarkMode"
         });
-        return;
+        // return;
+      }else{
+        dispach({
+          type: "disableDarkMode"
+        });
       }
-      dispach({
-        type: "disableDarkMode"
-      });
+     
+
+      // if(usuarioToken !== ""){
+      //   dispach({
+      //     type: "loginTrue",
+      //     user: usuarioToken
+      //   })
+      //   console.log("asjfdiashfioh")
+      // }else{
+      //   dispach({
+      //     type: "loginFalse",
+      //     user: "d"
+      //   });
+      // }
     }
 
     getStoregetDarkMode();

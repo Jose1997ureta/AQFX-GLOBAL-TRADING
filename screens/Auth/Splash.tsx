@@ -1,21 +1,46 @@
 import React, { useEffect } from 'react'
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, AsyncStorage } from 'react-native'
 import styled from 'styled-components/native'
 import { images as image, theme } from '../../constants' 
+import { useStateValue } from "../states/ThemeState";
 
 export const SplashScreen = ({ navigation } ) => {
+  const [state] = useStateValue();
 
   useEffect(() => {
-    getSession()
+    // const session = await theme.getSession("token");
+    // setTimeout(() => {
+    //   navigation.navigate(session ? 'Home' : 'AuthStack')
+    // }, 3000)
+    async function getSession() {
+      const isLogin = await AsyncStorage.getItem('UserLogin');
+      // const usuario = state.user;
+      // if(usuario){
+      //   dispach({
+      //     type: "loginTrue"
+      //   })
+      // }
+      // dispach({
+      //   type: "loginFalse"
+      // })
+      // console.log(usuario + "hooa")
+      setTimeout(() => {
+        navigation.navigate(isLogin !== "" ? 'Home': 'AuthStack')
+      }, 3000)
+
+    }
+
+    getSession();
+
   }, [])
 
 
-  const getSession = async () => {
-    const session = await theme.getSession();
-    setTimeout(() => {
-      navigation.navigate(session ? 'Home' : 'AuthStack')
-    }, 3000)
-  }
+  // const getSession = async () => {
+  //   const session = await theme.getSession();
+  //   setTimeout(() => {
+  //     navigation.navigate(session ? 'Home' : 'AuthStack')
+  //   }, 3000)
+  // }
 
   return ( 
     <SplashContainer>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Image, SafeAreaView, ScrollView, Dimensions } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { View, Image, SafeAreaView, ScrollView, Dimensions, AsyncStorage } from 'react-native';
 
 import { images as image, theme} from '../../../constants'
 import { HeaderNavigation, TextFooter } from '../../../components'
@@ -31,17 +31,35 @@ import {
    ButtonStyle,
 
 } from '../../../styles'
+// import { useStateValue } from '../../states/ThemeState'
 
 const height = Dimensions.get('window').height
 
 export const Suscribe3Screen =  ({ navigation }) => {
+  // const [ , dispach ] = useStateValue();
   const datosUsuario = navigation.getParam('datosUserTarjeta')
   const [montoSuscripcion, setMontoSuscripcion] = useState('2000')
 
+  useEffect(() => {
+    getSession();
+  }, [])
+
+  const getSession = async () => {
+    let login = await AsyncStorage.getItem("UserLogin");
+    console.log(login);
+  };
+
   const saveTarjeta = () => {
     const datosSubcripcion = {...datosUsuario, montoSub: montoSuscripcion}
-    console.log(datosSubcripcion)
-    navigation.navigate('Screens')
+    console.log(datosSubcripcion);
+    // await AsyncStorage.setItem("UserLogin", "datosSubcripcion");
+    // dispach({
+    //   type: "loginTrue",
+    //   user: "datosSubcripcion",
+    // })
+    // setTimeout(() => {
+      // navigation.navigate('Screens')     
+    // }, 3000)
   }
 
   return (

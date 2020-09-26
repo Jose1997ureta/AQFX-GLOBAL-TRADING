@@ -5,6 +5,7 @@ import { HeaderNavigation, ListNotice, Loading } from '../components'
 import { images as image, theme } from '../constants'
 import { NoticeAll } from '../model/API_Noticias'
 
+
 import { 
   Base,
   Container,
@@ -30,7 +31,6 @@ import {
 } from '../styles'
 
 export const HomeScreen = ({ navigation }) => {
-
   const {loading, list} = NoticeAll();
 
   return (
@@ -48,7 +48,6 @@ export const HomeScreen = ({ navigation }) => {
             <TitleHome>En Vivo</TitleHome>
             <PuntoRed></PuntoRed>
           </Row>
-      
           <Between style={{marginTop: theme.sizes.margin}}>
             <CardHome onPress={() => navigation.navigate('Live')}>
               <CardHomeImage source={image.images.HomeCard1}/>
@@ -71,9 +70,8 @@ export const HomeScreen = ({ navigation }) => {
               </CardHomeContent>
             </CardHome>
           </Between>
-
           <Center>
-          <Separate/>
+            <Separate/>
           </Center>
         </Container>
     
