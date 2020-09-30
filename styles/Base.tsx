@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native'
-import { theme } from '../constants'
 import styled from 'styled-components/native'
+
+export const Vista = styled.SafeAreaView`
+  flex: 1;
+  background-color: ${(props:any) => props.theme.fondo1};
+`;
 
 export const Container = styled.View`
   flex: 1;
-  /* height: 100%; */
-  padding: 0 20px;
-  background-color: ${props => props.theme.background};
+  background-color: ${(props: any) => props.theme.fondo1};
 `;
 
 export const PaddingContainer = styled.View`
@@ -29,8 +31,6 @@ export const W100 = styled.View`
 export const Center = styled.View`
   width: 100%;
   align-items: center;
-  /* flex-direction: row;
-  justify-content: center; */
 `;
 
 export const Between = styled.View`
@@ -40,11 +40,7 @@ export const Between = styled.View`
   align-items: center;
 `;
 
-export const ScrollContainer = styled.ScrollView`
-  /* background-color: #fff;
-  flex: 1; */
-  /* justify-content: center; */
-`;
+export const ScrollContainer = styled.ScrollView``;
 
 export const HeaderBack = styled.TouchableOpacity``;
 
@@ -59,11 +55,9 @@ export const Base = StyleSheet.create({
   viewContainer: {
     flex: 1,
     paddingHorizontal: 20,
-    // backgroundColor: '#fff'
   },
   row: {
     flexDirection: 'row',
-    // alignItems: 'center',
   },
 
   between:{

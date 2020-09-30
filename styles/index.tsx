@@ -1,5 +1,6 @@
 export { 
   Base, 
+  Vista,
   Container, 
   ContainerButton, 
   Row, 
@@ -83,8 +84,6 @@ export {
 } from './Notice'
 
 export {
-  LiveHeaderContainer,
-  LiveContainer,
   LiveItem,
   LiveItemHeaderContainer,
   LiveItemHeader,
@@ -118,7 +117,6 @@ export {
 } from './Cursos'
 
 export {
-  DetalleCurso,
   DetalleHeader,
   TituloDetalleHeader,
   TitleProgress,

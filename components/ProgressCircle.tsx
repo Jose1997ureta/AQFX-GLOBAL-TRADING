@@ -26,9 +26,9 @@ export default function Donut({
   const halfCircle = radius + strokeWidth;
   const circleCircumference = 2 * Math.PI * radius;
 
-  const [state] = useStateValue();
+  const [state]:any = useStateValue();
 
-  const animation = (toValue) => {
+  const animation = (toValue: number) => {
     return Animated.timing(animatedValue, {
       toValue,
       duration,
@@ -106,7 +106,7 @@ export default function Donut({
 const styles = StyleSheet.create({
   TextDonut: {
     fontSize: theme.sizes.h6,
-    fontWeight: theme.weight.bold,
+    fontWeight: `${theme.weight.bold}`,
     textAlign: "center",
   }
 })

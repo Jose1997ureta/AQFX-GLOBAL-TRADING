@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 export const TitleHome = styled.Text`
   font-size: ${theme.sizes.h1}px;
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   line-height: 39px;
   font-weight: ${theme.weight.bold};
   margin-right: 14px;
@@ -52,7 +52,7 @@ export const CardHomeContentText = styled.Text`
 export const Separate = styled.View`
   width: 38px;
   height: 4px;
-  background-color: ${props => props.theme.textColor};
+  background-color: ${(props:any) => props.theme.fondo4};
   margin-top: 34px;
   margin-bottom: 30px;
   border-radius: 15px;
@@ -72,12 +72,12 @@ export const CardHomeContentViewText = styled.Text`
 
 export const NoticeHomeContainer = styled.View`
   flex: 1;
-  background-color: ${props => props.theme.background};;
+  background-color: ${(props:any) => props.theme.fondo1};;
 `;
 
 export const NoticeHomeTitle = styled.Text`
   font-size: ${theme.sizes.h1}px;
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   line-height: 39px;
   font-weight: ${theme.weight.bold};
   padding: 0 20px;

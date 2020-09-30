@@ -1,14 +1,16 @@
 import React from "react";
-import { View, SafeAreaView, Dimensions, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { MaterialIcons }  from '@expo/vector-icons'
 import { HeaderNavigation, ListNotice, Loading } from '../components'
 import { images as image, theme } from '../constants'
-import { NoticeAll } from '../model/API_Noticias'
+import { NoticeAll } from '../model/API'
 
 
 import { 
   Base,
+  Vista,
   Container,
+  PaddingContainer,
   Center,
   Row,
   W100,
@@ -30,61 +32,63 @@ import {
   NoticeHomeTitleLine,
 } from '../styles'
 
-export const HomeScreen = ({ navigation }) => {
+export const HomeScreen = ({ navigation }: any) => {
   const {loading, list} = NoticeAll();
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <Vista>
       <ScrollView>
         { loading ? 
         <Loading /> :
         <>
         <Container>
-          <HeaderNavigation>
-            <View></View>
-          </HeaderNavigation>
+          <PaddingContainer>
+            <HeaderNavigation>
+              <View></View>
+            </HeaderNavigation>
 
-          <Row style={{marginTop: theme.sizes.margin}}>
-            <TitleHome>En Vivo</TitleHome>
-            <PuntoRed></PuntoRed>
-          </Row>
-          <Between style={{marginTop: theme.sizes.margin}}>
-            <CardHome onPress={() => navigation.navigate('Live')}>
-              <CardHomeImage source={image.images.HomeCard1}/>
-              <CardHomeContent>
-                <CardHomeContentText>Título de la live...</CardHomeContentText>
-                <CardHomeContentView>
-                  <MaterialIcons name='remove-red-eye' color='#fff'/>
-                  <CardHomeContentViewText>0</CardHomeContentViewText>
-                </CardHomeContentView>
-              </CardHomeContent>
-            </CardHome>
-            <CardHome>
-              <CardHomeImage source={image.images.HomeCard2}/>
-              <CardHomeContent>
-                <CardHomeContentText>Título de la live...</CardHomeContentText>
-                <CardHomeContentView>
-                  <MaterialIcons name='remove-red-eye' color='#fff'/>
-                  <CardHomeContentViewText>0</CardHomeContentViewText>
-                </CardHomeContentView>
-              </CardHomeContent>
-            </CardHome>
-          </Between>
-          <Center>
-            <Separate/>
-          </Center>
+            <Row style={{marginTop: theme.sizes.margin}}>
+              <TitleHome>En Vivo</TitleHome>
+              <PuntoRed></PuntoRed>
+            </Row>
+            <Between style={{marginTop: theme.sizes.margin}}>
+              <CardHome onPress={() => navigation.navigate('Live')}>
+                <CardHomeImage source={image.images.HomeCard1}/>
+                <CardHomeContent>
+                  <CardHomeContentText>Título de la live...</CardHomeContentText>
+                  <CardHomeContentView>
+                    <MaterialIcons name='remove-red-eye' color='#fff'/>
+                    <CardHomeContentViewText>0</CardHomeContentViewText>
+                  </CardHomeContentView>
+                </CardHomeContent>
+              </CardHome>
+              <CardHome onPress={() => navigation.navigate('Live2')}>
+                <CardHomeImage source={image.images.HomeCard2}/>
+                <CardHomeContent>
+                  <CardHomeContentText>Título de la live...</CardHomeContentText>
+                  <CardHomeContentView>
+                    <MaterialIcons name='remove-red-eye' color='#fff'/>
+                    <CardHomeContentViewText>0</CardHomeContentViewText>
+                  </CardHomeContentView>
+                </CardHomeContent>
+              </CardHome>
+            </Between>
+            <Center>
+              <Separate/>
+            </Center>
+          </PaddingContainer>
         </Container>
     
         <NoticeHomeContainer>
           <NoticeHomeTitle>Noticias</NoticeHomeTitle>
           <NoticeHomeTitleLine></NoticeHomeTitleLine>
-          { list.map(lista => (
-            <ListNotice key={lista.id} lista={lista} navigation={navigation}/>
+          { list.map((lista:any) => (
+            <ListNotice key={String(lista.id)} lista={lista} navigation={navigation}/>
           ))}
         </NoticeHomeContainer>
         </>
         }
       </ScrollView>
-    </SafeAreaView>
+    </Vista>
   )
 }

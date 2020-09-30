@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 export const NoticeContainer = styled.View`
   width: 100%;
-  background-color: ${props => props.theme.backgroundPrimary};
+  background-color: ${(props:any) => props.theme.fondo3};
   height: 150px;
 `;
 
@@ -36,21 +36,20 @@ export const NoticeSubtitle = styled.Text`
   font-size: ${theme.sizes.h6}px;
   font-weight: ${theme.weight.bold};
   line-height: ${theme.sizes.h5}px;
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   margin-bottom: 15px;
 `;
 
 export const NoticeDescription = styled.Text`
   font-size: ${theme.sizes.h6}px;
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   margin-bottom: 15px;
-  /* line-height: 16px; */
 `;
 
 export const NoticeLinkBlack = styled.Text`
   font-size: ${theme.sizes.h6}px;
   font-weight: ${theme.weight.bold};
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   margin-right: 10px;
 `;
 

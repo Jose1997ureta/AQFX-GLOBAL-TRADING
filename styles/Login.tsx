@@ -1,16 +1,14 @@
-import { Dimensions } from 'react-native'
 import { theme } from '../constants'
 import styled from 'styled-components/native'
 
-const height = Dimensions.get('window').height
 
 export const ImageBackground = styled.ImageBackground`
   flex: 1;
-  background-color: ${props => props.theme.background};
+  background-color: ${(props:any) => props.theme.fondo1};
 `;
 
 export const TextLogin = styled.Text`
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   font-size: ${theme.sizes.h3}px;
   margin-bottom: 34px;
   margin-top: 43px;
@@ -30,7 +28,7 @@ export const TextOlvidarPassword = styled.Text`
   font-size: ${theme.sizes.h6}px;
   line-height: 14px;
   font-weight: ${theme.weight.semibold};
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
 `;
 
 export const SuscribeContainer = styled.TouchableOpacity`
@@ -43,5 +41,5 @@ export const TextSuscribe = styled.Text`
   font-weight: ${theme.weight.semibold};
   margin-top: ${theme.sizes.margin * 2}px;
   line-height: 16px;
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
 `;

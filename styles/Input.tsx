@@ -1,4 +1,3 @@
-// import { StyleSheet } from 'react-native'
 import { theme } from '../constants'
 import styled from 'styled-components/native'
 
@@ -6,11 +5,11 @@ export const Input = styled.TextInput`
   width: 100%;
   font-size: ${theme.sizes.h5}px;
   line-height: ${theme.sizes.h4}px;
-  background-color: ${props => props.theme.backgroundInput};
+  background-color: ${(props:any) => props.theme.fondo7};
   padding: ${theme.sizes.padding}px;
   border-radius: ${theme.sizes.radiusInput}px;
-  border: 1px solid ${props => props.theme.borderButton};
-  color: ${props => props.theme.textColorDark};
+  border: 1px solid ${(props:any) => props.theme.fondo9};
+  color: ${(props:any) => props.theme.fondo5};
 `;
 
 export const InputItem = styled.View`
@@ -30,9 +29,9 @@ export const InputLogins = styled.TextInput`
   width: 100%;
   font-size: ${theme.sizes.h5}px;
   line-height: ${theme.sizes.h4}px;
-  background-color: ${props => props.theme.backgroundInputLogin};
+  background-color: ${(props:any) => props.theme.fondo7};
   padding: ${theme.sizes.padding}px;
   border-radius: ${theme.sizes.radiusInput}px;
-  border: 1px solid ${props => props.theme.borderButton};
-  color: ${props => props.theme.textColor};
+  border: 1px solid ${(props:any) => props.theme.fondo9};
+  color: ${(props:any) => props.theme.fondo4};
 `;

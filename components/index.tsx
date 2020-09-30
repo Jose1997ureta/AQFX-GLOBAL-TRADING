@@ -1,4 +1,4 @@
-import Loading from './Loading'
+import { Loading } from './Loading'
 
 export { TextInput }  from './Input'
 export { InputLogin }  from './InputLogin'
@@ -7,6 +7,7 @@ export { HeaderNavigation } from './Switch'
 export { TextFooter } from './TextFooter'
 export { ListNotice } from './ListNotice'
 export { ListLive } from './ListLive'
+export { List2Live } from './List2Live'
 export { ListCursos } from './ListCursos'
 export { ListVideos } from './ListVideos'
 // export Donut from './ProgressCircle'

@@ -1,14 +1,8 @@
-import { ImagePropTypes } from 'react-native';
 import styled from 'styled-components/native'
 import { theme } from '../constants'
 
-export const DetalleCurso = styled.View`
-  flex: 1;
-  background-color: ${props => props.theme.background};
-`;
-
 export const DetalleHeader = styled.View`
-  background-color: ${props => props.theme.backgroundPrimary};
+  background-color: ${(props:any) => props.theme.fondo3};
   padding-bottom: 18px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -17,7 +11,7 @@ export const DetalleHeader = styled.View`
 
 export const TituloDetalleHeader = styled.Text`
   font-size: ${theme.sizes.h1}px;
-  color: ${props => props.theme.textColorPrimary};
+  color: ${(props:any) => props.theme.fondo6};
   line-height: 39px;
   font-weight: ${theme.weight.bold};
   margin-top: 10px;
@@ -62,12 +56,12 @@ export const DetalleTime = styled.Text`
 export const CardVideoContainer = styled.View`
   width: 100%;
   padding: 0 20px;
-  background-color: ${props => props.theme.background};
+  background-color: ${(props:any) => props.theme.fondo1};
 `;
 
 export const CardVideo = styled.TouchableHighlight`
   flex-direction: row;
-  background-color: ${props => props.theme.backgrundDark};
+  background-color: ${(props:any) => props.theme.fondo2};
   border-radius: 5px;
   height: 77px;
   width: 100%;
@@ -77,7 +71,7 @@ export const CardVideo = styled.TouchableHighlight`
 export const CardVideoTitle = styled.Text`
   font-size: ${theme.sizes.h6}px;
   line-height: ${theme.sizes.h6}px;
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   font-weight: ${theme.weight.bold};
   margin-bottom: 4px;
 `;
@@ -111,7 +105,7 @@ export const CardVideoContentTitle = styled.Text`
 `;
 
 export const CardVideoContentDescription = styled.Text`
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   font-size: 12px;
   line-height: 14px;
   font-weight: ${theme.weight.bold};

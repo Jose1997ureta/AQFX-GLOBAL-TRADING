@@ -1,6 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
-// import { Base } from '../styles'
 import { theme } from '../constants'
 import styled from 'styled-components/native'
 
@@ -16,10 +14,10 @@ const TextFooterBase = styled.Text`
   margin-top: 30px;
   font-weight: ${theme.weight.semibold};
   margin-bottom: ${theme.sizes.margin}px;
-  color: ${props => props.theme.textColor};
+  color: ${(props: any) => props.theme.fondo4};
 `;
 
 const TextFooterBold = styled.Text`
   font-weight: ${theme.weight.bold};
-  color: ${props => props.theme.textColor};
+  color: ${(props: any) => props.theme.fondo4};
 `;

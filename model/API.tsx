@@ -74,7 +74,7 @@ export const LiveAll = () => {
   const [list, setList] = useState([])
   const [loading, setLoaging] = useState(true)
   
-  const getNoticeAll = async () => {
+  const getLiveAll = async () => {
     const response = await fetch("https://dev.azzinformatica.com/api/v1/en_vivo/listar_app")
     const rpta = await response.json()
     setLoaging(false)
@@ -82,7 +82,25 @@ export const LiveAll = () => {
   }
   
   useEffect(() => {
-    getNoticeAll()
+    getLiveAll()
+  },[])
+
+  return { loading, list }
+}
+
+export const Live2All = () => {
+  const [list, setList] = useState([])
+  const [loading, setLoaging] = useState(true)
+  
+  const getLive2All = async () => {
+    const response = await fetch("https://dev.azzinformatica.com/api/v1/clase_maestra/listar_app")
+    const rpta = await response.json()
+    setLoaging(false)
+    setList(rpta.data)
+  }
+  
+  useEffect(() => {
+    getLive2All()
   },[])
 
   return { loading, list }

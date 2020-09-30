@@ -2,7 +2,7 @@ import React from 'react';
 import { useField } from 'formik'
 import { Input, TextError } from '../styles'
 
-export const TextInput = ({fieldName , ...props }) => {
+export const TextInput = ({fieldName , ...props }: any) => {
   const [field, meta] = useField(fieldName)
 
   return (

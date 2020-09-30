@@ -15,7 +15,7 @@ import {
 
 } from '../styles'
 
-export const ListCursos = ({lista, navigation }) => {
+export const ListCursos = ({lista, navigation }: any) => {
 
   return (
     <Curso style={Base.borderShadow} onPress={() => navigation.navigate("DetalleCurso", {idCurso: lista.id}) } activeOpacity={0.1}

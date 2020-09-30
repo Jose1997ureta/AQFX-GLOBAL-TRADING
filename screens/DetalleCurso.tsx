@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { SafeAreaView, Animated, StyleSheet, FlatList } from 'react-native'
+import { Animated, StyleSheet, FlatList } from 'react-native'
 import { HeaderNavigation, Loading, ListVideos } from '../components'
 import { images as image, theme } from '../constants'
-import {  } from '../model/API_Noticias'
+// import {  } from '../model/API_Noticias'
 import { useStateValue } from './states/ThemeState'
 import { 
   Base,
+  Vista,
   Container,
   Row,
   HeaderBack,
@@ -14,7 +15,7 @@ import {
   W100,
 
   // LIVE
-  DetalleCurso,
+  // DetalleCurso,
   DetalleHeader,
   TituloDetalleHeader,
   TitleProgress,
@@ -34,10 +35,8 @@ import {
 
 } from '../styles'
 
-export const DetalleCursoScreen = ({ navigation }) => {
-
-  const [state] = useStateValue();
-
+export const DetalleCursoScreen = ({ navigation }:any) => {
+  const [state]:any = useStateValue();
   const [porcentage, setPorcentage] = useState(0)
   const animation = new Animated.Value(0);
 
@@ -61,7 +60,7 @@ export const DetalleCursoScreen = ({ navigation }) => {
   ]
 
   useEffect(() => {
-    animation.addListener(({ value }) => {
+    animation.addListener(({ value }:any) => {
       setPorcentage(parseInt(value, 10))
     });
 
@@ -77,37 +76,11 @@ export const DetalleCursoScreen = ({ navigation }) => {
     }
   }, [])
 
-  const ContainerHeader = () => {
-    return (
-      <DetalleHeader>
-        <PaddingContainer>
-          <HeaderNavigation>
-            <HeaderBack onPress={()=> navigation.navigate('Curso')}>
-              <ImagenBack source={image.images.ArrowLeft} />
-            </HeaderBack>
-          </HeaderNavigation>
-          <TituloDetalleHeader>Nombre del curso</TituloDetalleHeader>
-          <TitleProgress>Progreso del curso: 0/0 contenidos</TitleProgress>
-          <ProgressContainer>
-            <Animated.Text style={styles.NumberProgress}>{porcentage}%</Animated.Text>
-            <Progress>
-              <Animated.View style={[styles.ProgressBackground, {width: `${porcentage}%`, backgroundColor: `${state.theme.progressCurso}`}]}></Animated.View>
-            </Progress>
-          </ProgressContainer>
-          <Row style={Base.between}>
-            <DetalleTeacher>Instruido por: Stephanie Speranza</DetalleTeacher>
-            <DetalleTime>5 horas de contenido</DetalleTime>
-          </Row>
-        </PaddingContainer>
-      </DetalleHeader>
-    )
-  }
-
   const ContinueVideo = () => {
     return (
       <>
       <CardVideoTitle>Continuar viendo</CardVideoTitle>
-      <CardVideo style={[Base.borderShadow, {marginBottom: 14}]} activeOpacity={0.4} underlayColor="#eee" onPress={() => {}}>
+      <CardVideo style={[Base.borderShadow, {marginBottom: 14}]} activeOpacity={0.4} underlayColor="#eee" onPress={() => alert()}>
         <>
         <CardVideoImage>
           <CardVideoImageTime>00:00</CardVideoImageTime>
@@ -123,9 +96,29 @@ export const DetalleCursoScreen = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <DetalleCurso>
-        <ContainerHeader />
+    <Vista>
+      <Container>
+        <DetalleHeader>
+          <PaddingContainer>
+            <HeaderNavigation>
+              <HeaderBack onPress={()=> navigation.navigate('Curso')}>
+                <ImagenBack source={image.images.ArrowLeft} />
+              </HeaderBack>
+            </HeaderNavigation>
+            <TituloDetalleHeader>Nombre del curso</TituloDetalleHeader>
+            <TitleProgress>Progreso del curso: 0/0 contenidos</TitleProgress>
+            <ProgressContainer>
+              <Animated.Text style={styles.NumberProgress}>{porcentage}%</Animated.Text>
+              <Progress>
+                <Animated.View style={[styles.ProgressBackground, {width: `${porcentage}%`, backgroundColor: `${state.theme.progressCurso}`}]}></Animated.View>
+              </Progress>
+            </ProgressContainer>
+            <Row style={Base.between}>
+              <DetalleTeacher>Instruido por: Stephanie Speranza</DetalleTeacher>
+              <DetalleTime>5 horas de contenido</DetalleTime>
+            </Row>
+          </PaddingContainer>
+        </DetalleHeader>
         <CardVideoContainer>
           <ContinueVideo />
         </CardVideoContainer>
@@ -135,8 +128,8 @@ export const DetalleCursoScreen = ({ navigation }) => {
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => <ListVideos lista={item} navigation={navigation} />}
         />
-      </DetalleCurso>
-    </SafeAreaView>
+      </Container>
+    </Vista>
   )
 }
 

@@ -22,7 +22,7 @@ import {
 
 } from '../styles'
 
-export const ListLive = ({lista}) => {
+export const ListLive = ({lista}: any) => {
   return (
     <>
     <LiveItem>
@@ -33,13 +33,10 @@ export const ListLive = ({lista}) => {
               <LiveItemHeaderTitle>{lista.titulo}</LiveItemHeaderTitle>
               <LiveItemPuntoRed></LiveItemPuntoRed>
             </Row>
-
             <LiveItemImageContainer>
               <LiveItemImage source={{uri: lista.imagen}} />
             </LiveItemImageContainer>
-
           </PaddingContainer>
-
         </LiveItemHeader>
         <LiveItemSubtitleContainer>
           <LiveItemSubtitle>Descripción</LiveItemSubtitle>
@@ -54,7 +51,7 @@ export const ListLive = ({lista}) => {
         <LiveItemClave>Clave: {lista.clave == null ? 'xxxxxxx' : lista.clave}</LiveItemClave>
       </LiveItemDescriptionContainer>
     </LiveItem>
-      <LiveItemSeparador /> 
+    <LiveItemSeparador /> 
     </>
   )
 }

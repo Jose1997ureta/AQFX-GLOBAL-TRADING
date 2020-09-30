@@ -1,12 +1,13 @@
 import React from 'react'
-import { SafeAreaView, StatusBar } from 'react-native'
-import { ThemeProvider } from 'styled-components'
+import { ScrollView } from 'react-native'
 import { HeaderNavigation, Loading } from '../components'
 import { images as image, theme } from '../constants'
-import { NoticeAllId } from '../model/API_Noticias'
+import { NoticeAllId } from '../model/API'
 import { 
+  Vista,
   Container,
   Row,
+  W100,
   HeaderBack,
   ImagenBack,
   PaddingContainer,
@@ -20,47 +21,48 @@ import {
   NoticeDescription,
   NoticeLinkBlack,
   NoticeLink,
-
-  // THEME
-  ThemeLight,
-  ThemeDark,
 } from '../styles'
 
-export const NoticeScreen =  ({navigation}) => {
+
+export const NoticeScreen =  ({navigation}: any) => {
   const idNoticia  = navigation.getParam('idNoticia');
   const { loading, list } = NoticeAllId(idNoticia)
+  const lista:any = list;
 
   return (
-    // <ThemeProvider theme={ThemeDark}>
-    //   <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
-      <SafeAreaView style={{flex: 1}}>
-      { loading ? 
+    <Vista>
+      <ScrollView>
+        { loading ? 
         <Loading/> :
         <>
-        <NoticeContainer>
-          <PaddingContainer>
-            <HeaderNavigation>
-              <HeaderBack onPress={()=> navigation.navigate('Home')}>
-                <ImagenBack source={image.images.ArrowLeft} />
-              </HeaderBack>
-            </HeaderNavigation>
-            <NoticeTitle>Noticia</NoticeTitle>
-          </PaddingContainer>
-        </NoticeContainer>
         <Container>
-          <NoticeImageContainer>
-            <NoticeImage source={{uri: list.imagen}} />
-          </NoticeImageContainer>
-          <NoticeSubtitle>{list.titulo}</NoticeSubtitle>
-          <NoticeDescription>{list.descripcion}</NoticeDescription>
-          <Row>
-            <NoticeLinkBlack>Continuar leyendo:</NoticeLinkBlack>
-            <NoticeLink>{list.link}</NoticeLink>
-          </Row>
+          <NoticeContainer>
+            <PaddingContainer>
+              <HeaderNavigation>
+                <HeaderBack onPress={()=> navigation.navigate('Home')}>
+                  <ImagenBack source={image.images.ArrowLeft} />
+                </HeaderBack>
+              </HeaderNavigation>
+              <NoticeTitle>Noticia</NoticeTitle>
+            </PaddingContainer>
+          </NoticeContainer>
+          <Container>
+            <PaddingContainer>
+              <NoticeImageContainer>
+                <NoticeImage source={{uri: lista.imagen}} />
+              </NoticeImageContainer>
+              <NoticeSubtitle>{lista.titulo}</NoticeSubtitle>
+              <NoticeDescription>{lista.descripcion}</NoticeDescription>
+              <Row style={{marginBottom: theme.sizes.margin}}>
+                <NoticeLinkBlack>Continuar leyendo:</NoticeLinkBlack>
+                <NoticeLink>{lista.link}</NoticeLink>
+              </Row>
+            </PaddingContainer>
+          </Container>
         </Container>
         </>
       }
-      </SafeAreaView>
-    // </ThemeProvider>
+      </ScrollView>
+    </Vista>
   )
 }

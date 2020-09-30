@@ -6,9 +6,11 @@ import * as Yup from 'yup'
 
 import { images as image, theme} from '../../../constants'
 import { TextInput, HeaderNavigation, TextFooter } from '../../../components'
+import { useStateValue } from '../../states/ThemeState'
 import { 
   Base,
   Container,
+  PaddingContainer,
   Center,
   Row,
   W100,
@@ -34,7 +36,8 @@ import {
 
 const height = Dimensions.get('window').height
 
-export const Suscribe2Screen =  ({ navigation }) => {
+export const Suscribe2Screen =  ({ navigation }: any) => {
+  const [state]: any = useStateValue();
   const datosUser = navigation.getParam('datosUsuario')
   const [fechaTarjeta, setFechaTarjeta] = useState('')
   const [isFecha, setIsFecha] = useState(false)
@@ -108,7 +111,7 @@ export const Suscribe2Screen =  ({ navigation }) => {
         </ContainerTarjeta>
 
         <Center>
-          <ButtonPrimary onPress={submitForm} style={ButtonStyle.ButtonShadow}>
+          <ButtonPrimary onPress={submitForm} style={ButtonStyle.ButtonShadow} underlayColor={theme.colors.primary}>
             <TextButtonPrimary>Próximo</TextButtonPrimary>
           </ButtonPrimary>
         </Center>
@@ -127,51 +130,52 @@ export const Suscribe2Screen =  ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Container style={[Base.between , {height: height}]}>
-          <View>
-            <HeaderNavigation>
-              <HeaderBack onPress={()=> navigation.navigate('Suscribe1')}>
-                <ImagenBack source={image.images.Suscribe1ArrowLeft} />
-              </HeaderBack>
-            </HeaderNavigation>
+        <Container>
+          <PaddingContainer style={[{height: height},Base.between]}>
+            <View>
+              <HeaderNavigation>
+                <HeaderBack onPress={()=> navigation.navigate('Suscribe1')}>
+                  <ImagenBack source={image.images.Suscribe1ArrowLeft} />
+                </HeaderBack>
+              </HeaderNavigation>
 
-            <HeaderTitle>Todo los campos son obligatorios</HeaderTitle>
-            <Center>
-              <Image source={image.images.Suscribe2Paso2} />
-            </Center>
+              <HeaderTitle>Todo los campos son obligatorios</HeaderTitle>
+              <Center>
+                <Image source={state.theme.registerPaso2} />
+              </Center>
 
-            <HeaderTarjeta>
-              <HeaderTarjetaText>Registrar tarjeta</HeaderTarjetaText>
-              <Row>
-                <Image source={image.images.Suscribe2TarjetaFrente} style={{marginRight: 10}} />
-                <Image source={image.images.Suscribe2TarjetaAtras} />
-              </Row>
-            </HeaderTarjeta>
+              <HeaderTarjeta>
+                <HeaderTarjetaText>Registrar tarjeta</HeaderTarjetaText>
+                <Row>
+                  <Image source={image.images.Suscribe2TarjetaFrente} style={{marginRight: 10}} />
+                  <Image source={image.images.Suscribe2TarjetaAtras} />
+                </Row>
+              </HeaderTarjeta>
 
-            <W100>
-              <Formik
-                validationSchema={ Yup.object({
-                  numeroTarjeta: Yup
-                    .string()
-                    .min(16, 'El formato incorrecto')
-                    .required('El nombre es requerido'),
-                  code: Yup
-                    .string()
-                    .min(3, 'El codigo es incorrecto')
-                    .required('El codigo es requerido'),
-                  country: Yup
-                    .string()
-                    .required('El pais es requerido')
-                })}
-                initialValues={{ numeroTarjeta:'', code:'', country:''}}
-                onSubmit={x => saveTarjeta(x)}
-              >
-                <InputsForm />
-              </Formik>
-              
-            </W100>
-          </View>
-          <TextFooter />
+              <W100>
+                <Formik
+                  validationSchema={ Yup.object({
+                    numeroTarjeta: Yup
+                      .string()
+                      .min(16, 'El formato incorrecto')
+                      .required('El nombre es requerido'),
+                    code: Yup
+                      .string()
+                      .min(3, 'El codigo es incorrecto')
+                      .required('El codigo es requerido'),
+                    country: Yup
+                      .string()
+                      .required('El pais es requerido')
+                  })}
+                  initialValues={{ numeroTarjeta:'', code:'', country:''}}
+                  onSubmit={x => saveTarjeta(x)}
+                >
+                  <InputsForm />
+                </Formik>
+              </W100>
+            </View>
+            <TextFooter />
+          </PaddingContainer>
         </Container>
       </ScrollView>
     </SafeAreaView>

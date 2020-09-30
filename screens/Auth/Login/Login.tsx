@@ -8,6 +8,7 @@ import {
   // BASE
   Base, 
   Container,
+  PaddingContainer,
   Center,
   Row,
   W100,
@@ -31,7 +32,7 @@ import {
 
 const height = Dimensions.get('window').height
 
-export const LoginScreen = ({ navigation }) => {
+export const LoginScreen = ({ navigation }: any) => {
 
   const handleSubmit = ( x: Object ) => { 
     x ? navigation.navigate('Screens') : null
@@ -75,40 +76,40 @@ export const LoginScreen = ({ navigation }) => {
       <ScrollView>
         <ImageBackground source={images.images.LoginFondo}>
           <StatusBar backgroundColor="#fff" barStyle='dark-content'/>
-            <Container style={[Base.between, {height: height}]}>
-              <View>
-                <HeaderNavigation>
-                  <View></View>
-                </HeaderNavigation>
-                <TextLogin>Bienvenido</TextLogin>
-                
-                <ImageContainer>
-                  <Image source={images.images.LoginLogo} />
-                </ImageContainer>
-                
-                <W100>
-                  <Formik
-                    validationSchema={ Yup.object({
-                      user: Yup
-                        .string()
-                        .required('El usuario es requerido'),
-                      password: Yup
-                        .string()
-                        .required('El password es requerido')
-                    })}
-                    initialValues={{  user:'', password:''}}
-                    onSubmit={(x) => handleSubmit(x)}
-                  >
-                    <InputsForm />
-                  </Formik>
-                  <SuscribeContainer onPress={()=> navigation.navigate('Suscribe1')}>
-                    <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
-                  </SuscribeContainer>
-                </W100>
-              </View>
-              
-              <TextFooter/>
-              
+            <Container style={{backgroundColor: "initial"}}>
+              <PaddingContainer style={[{height: height},Base.between]}>
+                <View>
+                  <HeaderNavigation>
+                    <View></View>
+                  </HeaderNavigation>
+                  <TextLogin>Bienvenido</TextLogin>
+                  
+                  <ImageContainer>
+                    <Image source={images.images.LoginLogo} />
+                  </ImageContainer>
+                  
+                  <W100>
+                    <Formik
+                      validationSchema={ Yup.object({
+                        user: Yup
+                          .string()
+                          .required('El usuario es requerido'),
+                        password: Yup
+                          .string()
+                          .required('El password es requerido')
+                      })}
+                      initialValues={{  user:'', password:''}}
+                      onSubmit={(x) => handleSubmit(x)}
+                    >
+                      <InputsForm />
+                    </Formik>
+                    <SuscribeContainer onPress={()=> navigation.navigate('Suscribe1')}>
+                      <TextSuscribe>¿Aún no tienes una cuenta? <Text style={{color: theme.colors.primary}}>Suscribete</Text> </TextSuscribe>
+                    </SuscribeContainer>
+                  </W100>
+                </View>
+                <TextFooter/>
+              </PaddingContainer>
             </Container>
         </ImageBackground>
       </ScrollView>

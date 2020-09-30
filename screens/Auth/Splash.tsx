@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { images as image, theme } from '../../constants' 
 import { useStateValue } from "../states/ThemeState";
 
-export const SplashScreen = ({ navigation } ) => {
-  const [state] = useStateValue();
+export const SplashScreen = ({ navigation }: any) => {
+  const [state]: any = useStateValue();
 
   useEffect(() => {
     // const session = await theme.getSession("token");
@@ -62,7 +62,7 @@ const Splash = styled.ImageBackground`
 const SplashContainer = styled.View`
   flex: 1;
   width: 100%;
-  background-color: ${props => props.theme.backgroundPrimary};
+  background-color: ${(props: any) => props.theme.fondo3};
 `;
 
 const SpashImage = styled.Image`

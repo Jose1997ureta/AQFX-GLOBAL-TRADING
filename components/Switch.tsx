@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {Switch, AsyncStorage, View } from 'react-native';
+import {Switch, AsyncStorage } from 'react-native';
 import styled from 'styled-components/native'
 import { theme } from '../constants'
 
 import { useStateValue } from '../screens/states/ThemeState'
 
-export const HeaderNavigation = ({ children }) => {
+export const HeaderNavigation = ({ children }: any) => {
   const [darkmode, setDarkmode] = useState(false);
-  const [ , dispach] = useStateValue();
+  const [ , dispach]: any = useStateValue();
 
   useEffect(() => {
     async function getInitialState() {

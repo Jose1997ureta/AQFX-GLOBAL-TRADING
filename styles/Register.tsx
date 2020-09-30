@@ -7,7 +7,7 @@ export const HeaderTitle = styled.Text`
   text-align: center;
   font-weight: ${theme.weight.bold};
   margin-bottom: 10px;
-  color: ${theme.colors.secondary};
+  color: ${(props:any) => props.theme.fondo4};
 `;
 
 export const ButtonAvatar = styled.TouchableOpacity`
@@ -49,7 +49,7 @@ export const ContainerBandera = styled.View`
 `;
 
 export const TextPhone = styled.Text`
-  color: ${props => props.theme.textColor};
+  color: ${(props:any) => props.theme.fondo4};
   padding-left:5px;
 `;
 
@@ -65,7 +65,7 @@ export const HeaderTarjeta = styled.View`
 export const HeaderTarjetaText = styled.Text`
   font-weight: ${theme.weight.bold};
   font-size: ${theme.sizes.h4}px;
-  color: ${theme.colors.secondary};
+  color: ${(props:any) => props.theme.fondo4};
 `;
 
 export const ContainerTarjeta = styled.View`
@@ -84,12 +84,12 @@ export const HeaderMonto = styled.View`
 export const HeaderMontoText = styled.Text`
   font-weight: ${theme.weight.bold};
   font-size: ${theme.sizes.h4}px;
-  color: ${theme.colors.secondary};
+  color: ${(props:any) => props.theme.fondo4};
 `;
 
 export const Card = styled.View`
   width: 100%;
-  background-color: ${props => props.theme.backgrundDark};
+  background-color: ${(props:any) => props.theme.fondo2};
   border-radius: ${theme.sizes.radiusInput}px;
   padding: 73px 16px;
   margin-bottom: 56px;
@@ -97,7 +97,7 @@ export const Card = styled.View`
 
 export const CardText = styled.Text`
   font-size: ${theme.sizes.h1}px;
-  color: ${props => props.theme.textColorDark};
+  color: ${(props:any) => props.theme.fondo5};
   font-weight: ${theme.weight.bold};
 `;
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { HeaderNavigation, Loading, ListLive } from '../components'
+import { HeaderNavigation, Loading, List2Live } from '../components'
 import { images as image } from '../constants'
-import { LiveAll } from '../model/API'
+import { Live2All } from '../model/API'
 import { 
   Vista,
   Container,
@@ -13,8 +13,8 @@ import {
   W100,
 } from '../styles'
 
-export const LiveScreen = ({ navigation }: any) => {
-  const { loading, list } = LiveAll()
+export const Live2Screen = ({ navigation }: any) => {
+  const { loading, list } = Live2All()
 
   return (
     <Vista>
@@ -31,7 +31,7 @@ export const LiveScreen = ({ navigation }: any) => {
           </HeaderNavigation>
         </PaddingContainer>
         {list.map((lista:any) => (
-          <ListLive key={lista.titulo} lista={lista}/>
+          <List2Live key={lista.titulo} lista={lista}/>
         ))}
       </Container>
       }
