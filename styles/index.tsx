@@ -135,4 +135,25 @@ export {
   CardVideoSeparate,
 } from './DetalleCurso'
 
+export {
+  Header,
+  HeaderVideo,
+  HeaderVideoTitle,
+  VideoContainer,
+  TabContainer,
+  Tab,
+  TabContent,
+  TabContentDescription,
+  TabContentDescripcionVideo,
+  CardComentario,
+  CardComentarioImageContent,
+  CardComentarioImagen,
+  CardComentarioContent,
+  CardComentarioTitulo,
+  CardComentarioDescripction,
+  CardComentarioText,
+  CardComentarioLike,
+  CardComentarioLikeNumber,
+} from './Video'
+
 export { ThemeDark, ThemeLight } from './theme'

@@ -1,35 +1,50 @@
 import React, {useState} from 'react'
-import { Dimensions, Animated, View, ScrollView, Text } from 'react-native'
-import { HeaderNavigation, Loading, ListVideos } from '../components'
+import { Dimensions, Animated, View, ScrollView, Text, StyleSheet, FlatList } from 'react-native'
+import { HeaderNavigation, Loading, ListComentarios } from '../components'
 import { images as image, theme } from '../constants'
 import styled from 'styled-components/native'
 import { Video } from 'expo-av'
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { useStateValue } from './states/ThemeState'
+var ScrollableTabView = require('react-native-scrollable-tab-view')
+var ScrollableTabBar = require('react-native-scrollable-tab-view/ScrollableTabBar')
 import { 
   Base,
-  Container,
   Vista,
+  Container,
   Row,
+  Center,
   HeaderBack,
   ImagenBack,
   PaddingContainer,
   W100,
 
+  // VIDEO
+  Header,
+  HeaderVideo,
+  HeaderVideoTitle,
+  VideoContainer,
+  TabContainer,
+  Tab,
+  TabContent,
+  TabContentDescription,
+  TabContentDescripcionVideo,
+  CardComentario,
+
 } from '../styles'
 
-const width = Dimensions.get('window').height;
+// const width = Dimensions.get('window').height;
 
 export const VideoScreen = ({ navigation }: any) => {
   const idVideo = navigation.getParam("idVideo");
-  const [state]:any = useStateValue();
-  const [active, setActive] = useState(0)
-  const [xTabOne, setXTabOne] = useState(0)
-  const [xTabTwo, setXTabTwo] = useState(0)
-  const [translateX, setTranslateX] = useState(new Animated.Value(0))
-  const [translateXTabOne, setTranslateXTabOne] = useState(new Animated.Value(0))
-  const [translateXTabTwo, setTranslateXTabTwo] = useState(new Animated.Value(width))
-  const [translateY, setTranslateY] = useState(-1000)
+  // const [state]:any = useStateValue();
+  // const [active, setActive] = useState(0)
+  // const [xTabOne, setXTabOne] = useState(0)
+  // const [xTabTwo, setXTabTwo] = useState(0)
+  // const [translateX, setTranslateX] = useState(new Animated.Value(0))
+  // const [translateXTabOne, setTranslateXTabOne] = useState(new Animated.Value(0))
+  // const [translateXTabTwo, setTranslateXTabTwo] = useState(new Animated.Value(width))
+  // const [translateY, setTranslateY] = useState(-1000)
   
   const changeOrientation = async() => {
     const dim = Dimensions.get("screen")
@@ -44,42 +59,65 @@ export const VideoScreen = ({ navigation }: any) => {
     }
   }
 
-  const handlerSlide = (type:number) => {
-    Animated.spring(translateX, {
-      toValue: type,
-      useNativeDriver: true,
-    }).start();
+  // const handlerSlide = (type:number) => {
+  //   Animated.spring(translateX, {
+  //     toValue: type,
+  //     useNativeDriver: true,
+  //   }).start();
     
-    if(active === 0){
-      Animated.parallel([
-        Animated.spring(translateXTabOne, {
-          toValue: 0,
-          useNativeDriver: true,
-        }).start(),
-        Animated.spring(translateXTabTwo, {
-          toValue: width,
-          useNativeDriver: true,
-        }).start()
-      ]);
-    }else{
-      Animated.parallel([
-        Animated.spring(translateXTabOne, {
-          toValue: -width,
-          useNativeDriver: true,
-        }).start(),
-        Animated.spring(translateXTabTwo, {
-          toValue: 0,
-          useNativeDriver: true,
-        }).start()
-    ]);
-    }
-  }
+  //   if(active === 0){
+  //     Animated.parallel([
+  //       Animated.spring(translateXTabOne, {
+  //         toValue: 0,
+  //         useNativeDriver: true,
+  //       }).start(),
+  //       Animated.spring(translateXTabTwo, {
+  //         toValue: width,
+  //         useNativeDriver: true,
+  //       }).start()
+  //     ]);
+  //   }else{
+  //     Animated.parallel([
+  //       Animated.spring(translateXTabOne, {
+  //         toValue: -width,
+  //         useNativeDriver: true,
+  //       }).start(),
+  //       Animated.spring(translateXTabTwo, {
+  //         toValue: 0,
+  //         useNativeDriver: true,
+  //       }).start()
+  //   ]);
+  //   }
+  // }
+
+  const Comentarios = [
+    {id: "1", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 0},
+    {id: "2", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 12},
+    {id: "3", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 1},
+    {id: "4", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 5},
+    {id: "5", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 5},
+    {id: "6", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 5},
+    {id: "7", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 5},
+    {id: "8", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 5},
+    {id: "9", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 5},
+  ]
 
   const ContentDescription = () => {
     return (
-      <TabContent>
-       <TabContentDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus, consectetur adipiscing elit ut aliquam, purus sit amet luctus *consectetur adipiscing elit ut aliquam, purus sit amet luctu * aliquam, purus sit amet luctus</TabContentDescription>
-      </TabContent>
+      <>
+      <TabContentDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus, consectetur adipiscing elit ut aliquam, purus sit amet luctus *consectetur adipiscing elit ut aliquam, purus sit amet luctu * aliquam, purus sit amet luctus</TabContentDescription>
+      <Center>
+        <TabContentDescripcionVideo source={image.images.Video1} />
+      </Center>
+     </>
+    )
+  }
+
+  const ContentComentarios = () => {
+    return (
+      <Container>
+        <CardComentario></CardComentario>
+      </Container>
     )
   }
 
@@ -116,144 +154,38 @@ export const VideoScreen = ({ navigation }: any) => {
           </HeaderVideo>
         </Header>
         <Container>
-          <TabContainer>
-            <Animated.View 
-              style={{
-                position: "absolute",
-                width: "50%",
-                height: "100%",
-                top: 0,
-                left: 0,
-                backgroundColor: "#FFF",
-                transform: [
-                  {
-                    translateX
-                  }
-                ]
-            }}
+        <ScrollableTabView
+          renderTabBar={() => (
+            <ScrollableTabBar
+              tabStyle={styles.tabStyle}
             />
-            <Tab 
-              onLayout={event => setXTabOne(event.nativeEvent.layout.x)}
-              onPress={() => {
-                setActive(0)
-                handlerSlide(xTabOne)
-              }}
-            >
-              <TabText style={{ 
-                color: active === 1 ? "#FFF" : theme.colors.secondary
-               }}
-              >Descripción</TabText>
-            </Tab>
-            <Tab
-              onLayout={event => setXTabTwo(event.nativeEvent.layout.x)}
-              onPress={() => {
-                setActive(1)
-                handlerSlide(xTabTwo)
-              }}
-            >
-              <TabText style={{ 
-                color: active === 0 ? "#FFF" : theme.colors.secondary
-               }}
-              >Comentarios</TabText>
-            </Tab>
-          </TabContainer>
-          <ScrollView>
-            <Animated.View
-              onLayout={(event:any) => setTranslateY(event.nativeEvent.layout.height)}
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                transform: [
-                    {
-                        translateX: translateXTabOne
-                    }
-                ]
-              }}
-              > 
-              {/* <ContentDescription /> */}
-              <Text>Hi, I am a cute catafknaskfnaskfnlashl</Text>
-            </Animated.View>
-            <Animated.View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                transform: [
-                  {
-                    translateX: translateXTabTwo
-                  },
-                  {
-                    translateY: -translateY
-                  }
-                ]
-              }}
-              > 
-              {/* <Text>Hi, I am a cute catafknaskfnaskfnlashl</Text> */}
-              <ContentDescription />
-            </Animated.View>
-          </ScrollView>
+          )}
+          tabBarTextStyle={styles.tabBarTextStyle}
+          >
+            <TabContent key='1' tabLabel='Descripcion'>
+              <ContentDescription/>
+            </TabContent>
+            <Container key='2' tabLabel='Comentarios'>
+              <FlatList
+                data={Comentarios}
+                keyExtractor={item => String(item.id)}
+                renderItem={({item}) => <ListComentarios lista={item} />}
+              />
+            </Container>
+          </ScrollableTabView>
         </Container>
       </Container>
     </Vista>
   )
 }
 
-
 // styles
-export const Header = styled.View`
-  background-color: ${(props:any) => props.theme.fondo12};
-`;
-
-export const HeaderVideo = styled.View`
-  background-color: ${theme.colors.primary};
-  padding-bottom: 18px;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  margin-bottom: ${theme.sizes.margin}px;
-`;
-
-export const HeaderVideoTitle = styled.Text`
-  font-size: ${theme.sizes.h4}px;
-  color: #FFF;
-  line-height: 20px;
-  font-weight: ${theme.weight.bold};
-  margin-top: 10px;
-`;
-
-export const VideoContainer = styled.View`
-  width: 100%;
-  height: 230px;
-  border-radius: ${theme.sizes.radiusInput}px;
-  margin-bottom: ${theme.sizes.margin}px;
-  margin-top: ${theme.sizes.margin}px;
-  background-color: #eee;
-`;
-
-export const TabContainer = styled.View`
-  flex-direction: row;
-  background-color: ${theme.colors.primary};
-  position: relative;
-`;
-
-export const Tab = styled.TouchableOpacity`
-  width: 50%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-`;
-
-export const TabText = styled.Text`
-  font-size: ${theme.sizes.h5}px;
-  line-height: 17px;
-  font-weight: ${theme.weight.bold};
-`;
-
-export const TabContent = styled.View`
-  padding: 16px 20px;
-`;
-
-export const TabContentDescription = styled.Text`
-  color: ${(props:any) => props.theme.fondo4};
-  font-size: ${theme.sizes.h6}px;
-  line-height: 16px;
-`;
+const styles = StyleSheet.create({
+  tabStyle: {
+    width: '50%',
+  },
+ tabBarTextStyle: {
+   fontSize: theme.sizes.h6,
+   fontWeight: 'bold',
+ },
+});

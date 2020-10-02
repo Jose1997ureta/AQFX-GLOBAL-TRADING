@@ -31,11 +31,14 @@ export const ThemeLight = {
   fondo10: theme.colors.third,
   fondo11: theme.colors.secondary,
   fondo12: theme.colors.secondary,
+  fondo13: "#D4D6D8",
   statusBarStyle: "dark-content",
 
   registerPaso1: image.images.Suscribe1Paso1,
   registerPaso2: image.images.Suscribe2Paso2,
   registerPaso3: image.images.Suscribe3Paso3,
+  Like: image.images.Like,
+  LikeBackground: image.images.LikeBackground,
 }
 
 export const ThemeDark = {
@@ -70,9 +73,12 @@ export const ThemeDark = {
   fondo10: '#6B6C6E',
   fondo11: theme.colors.primary,
   fondo12: "#3E3E41",
+  fondo13: "#FFF",
   statusBarStyle: "light-content",
 
   registerPaso1: image.images.Suscribe1Paso1Black,
   registerPaso2: image.images.Suscribe2Paso2Black,
   registerPaso3: image.images.Suscribe3Paso3Black,
+  Like: image.images.LikeWhite,
+  LikeBackground: image.images.LikeWhite,
 }

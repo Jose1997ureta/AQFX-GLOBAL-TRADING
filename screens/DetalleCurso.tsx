@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Animated, StyleSheet, FlatList } from 'react-native'
+import { Text, View, StyleSheet, FlatList } from 'react-native'
 import { HeaderNavigation, Loading, ListVideos } from '../components'
 import { images as image, theme } from '../constants'
 // import {  } from '../model/API_Noticias'
@@ -13,7 +13,7 @@ import {
   ImagenBack,
   PaddingContainer,
   W100,
-
+  
   // LIVE
   // DetalleCurso,
   DetalleHeader,
@@ -37,8 +37,8 @@ import {
 
 export const DetalleCursoScreen = ({ navigation }:any) => {
   const [state]:any = useStateValue();
-  const [porcentage, setPorcentage] = useState(0)
-  const animation = new Animated.Value(0);
+  // const [porcentage, setPorcentage] = useState(0)
+  // const animation = new Animated.Value(0);
 
   const parametro = 70;
   const videos = [
@@ -59,22 +59,22 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
     {id: "15", titulo: "tema 15 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
   ]
 
-  useEffect(() => {
-    animation.addListener(({ value }:any) => {
-      setPorcentage(parseInt(value, 10))
-    });
+  // useEffect(() => {
+  //   animation.addListener(({ value }:any) => {
+  //     setPorcentage(parseInt(value, 10))
+  //   });
 
-    Animated.timing(animation, {
-      toValue: parametro,
-      duration: 200,
-      useNativeDriver: true,
-      delay: 0
-    }).start();
+  //   Animated.timing(animation, {
+  //     toValue: parametro,
+  //     duration: 200,
+  //     useNativeDriver: true,
+  //     delay: 0
+  //   }).start();
 
-    return () => {
-      animation.removeAllListeners();
-    }
-  }, [])
+  //   return () => {
+  //     animation.removeAllListeners();
+  //   }
+  // }, [])
 
   const ContinueVideo = () => {
     return (
@@ -108,9 +108,9 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
             <TituloDetalleHeader>Nombre del curso</TituloDetalleHeader>
             <TitleProgress>Progreso del curso: 0/0 contenidos</TitleProgress>
             <ProgressContainer>
-              <Animated.Text style={styles.NumberProgress}>{porcentage}%</Animated.Text>
+              <Text style={styles.NumberProgress}>{parametro}%</Text>
               <Progress>
-                <Animated.View style={[styles.ProgressBackground, {width: `${porcentage}%`, backgroundColor: `${state.theme.progressCurso}`}]}></Animated.View>
+                <View style={[styles.ProgressBackground, {width: `${parametro}%`, backgroundColor: `${state.theme.fondo11}`}]}></View>
               </Progress>
             </ProgressContainer>
             <Row style={Base.between}>
@@ -126,7 +126,7 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
         <FlatList
           data={videos}
           keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => <ListVideos lista={item} navigation={navigation} />}
+          renderItem={({ item }) => <ListVideos lista={item} onPress={() => navigation.navigate('Video', {idVideo: item.id})} />}
         />
       </Container>
     </Vista>

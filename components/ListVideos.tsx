@@ -10,10 +10,10 @@ import {
   CardVideoContentDescription,
  } from '../styles'
 
-export const ListVideos = ({ lista, navigation }: any) => {
+export const ListVideos = ({ lista, onPress }: any) => {
   return (
     <PaddingContainer style={{marginTop: 10}}>
-      <CardVideo style={Base.borderShadow} activeOpacity={0.4} underlayColor="#eee" onPress={() => navigation.navigate("Video", {idVideo: lista.id})}>
+      <CardVideo style={Base.borderShadow} activeOpacity={0.4} underlayColor="#eee" onPress={onPress}>
         <>
         <CardVideoImage>
           <CardVideoImageTime>{lista.time}</CardVideoImageTime>

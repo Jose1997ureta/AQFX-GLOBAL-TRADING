@@ -39,4 +39,9 @@ export const images = {
   
   ArrowLeft: require('../assets/Suscribe-1/arrow-left.png'),
 
+  // VIDEO
+  Video1: require('../assets/Video/imagen1.png'),
+  Like: require('../assets/Video/like.png'),
+  LikeBackground: require('../assets/Video/like-background.png'),
+  LikeWhite: require('../assets/Video/like-white.png'),
 }
