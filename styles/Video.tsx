@@ -30,19 +30,19 @@ export const VideoContainer = styled.View`
   background-color: #eee;
 `;
 
-export const TabContainer = styled.View`
-  flex-direction: row;
-  background-color: ${theme.colors.primary};
-  position: relative;
-`;
+// export const TabContainer = styled.View`
+//   flex-direction: row;
+//   background-color: ${theme.colors.primary};
+//   position: relative;
+// `;
 
-export const Tab = styled.TouchableOpacity`
-  width: 50%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-`;
+// export const Tab = styled.TouchableOpacity`
+//   width: 50%;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 10px;
+// `;
 
 export const TabContent = styled.View`
   padding: 16px 20px;
@@ -54,9 +54,23 @@ export const TabContentDescription = styled.Text`
   line-height: 16px;
 `;
 
-export const TabContentDescripcionVideo = styled.Image`
+export const TabContentDescripcionButton = styled.TouchableHighlight`
+  background-color: ${(props:any) => props.theme.fondo2};
   margin-top: ${theme.sizes.margin}px;
+  width: 90%;
+  padding: 10px 25px;
+  border-radius: 5px; 
 `;
+
+export const TabContentDescripcionImage = styled.Image`
+  /* margin-top: ${theme.sizes.margin}px; */
+`;
+
+export const TabContentDescripcionText = styled.Text`
+  color: ${(props:any) => props.theme.fondo4};
+  font-weight: ${theme.weight.bold};
+  font-size: 18px;
+`;  
 
 // CARD COMENTARIOS
 export const CardComentario = styled.View`

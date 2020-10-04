@@ -1,5 +1,5 @@
 import React from 'react'
-import { theme, images as image } from '../constants'
+import { images as image } from '../constants'
 import { useStateValue } from '../screens/states/ThemeState'
 import { 
   Row,

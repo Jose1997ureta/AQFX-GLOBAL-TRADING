@@ -39,6 +39,8 @@ export const ThemeLight = {
   registerPaso3: image.images.Suscribe3Paso3,
   Like: image.images.Like,
   LikeBackground: image.images.LikeBackground,
+  Paso1Examen: image.images.Paso1Examen,
+  Paso2Examen: image.images.Paso2Examen,
 }
 
 export const ThemeDark = {
@@ -81,4 +83,6 @@ export const ThemeDark = {
   registerPaso3: image.images.Suscribe3Paso3Black,
   Like: image.images.LikeWhite,
   LikeBackground: image.images.LikeWhite,
+  Paso1Examen: image.images.Paso1ExamenBlack,
+  Paso2Examen: image.images.Paso2ExamenBlack,
 }

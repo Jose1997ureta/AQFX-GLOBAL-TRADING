@@ -13,6 +13,7 @@ import {
   Vista,
   Container,
   Row,
+  Between,
   Center,
   HeaderBack,
   ImagenBack,
@@ -24,12 +25,13 @@ import {
   HeaderVideo,
   HeaderVideoTitle,
   VideoContainer,
-  TabContainer,
-  Tab,
+  // TabContainer,
+  // Tab,
   TabContent,
   TabContentDescription,
-  TabContentDescripcionVideo,
-  CardComentario,
+  TabContentDescripcionButton,
+  TabContentDescripcionImage,
+  TabContentDescripcionText,
 
 } from '../styles'
 
@@ -104,20 +106,17 @@ export const VideoScreen = ({ navigation }: any) => {
 
   const ContentDescription = () => {
     return (
-      <>
+    <>
       <TabContentDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus, consectetur adipiscing elit ut aliquam, purus sit amet luctus *consectetur adipiscing elit ut aliquam, purus sit amet luctu * aliquam, purus sit amet luctus</TabContentDescription>
       <Center>
-        <TabContentDescripcionVideo source={image.images.Video1} />
+        <TabContentDescripcionButton style={Base.borderShadow} onPress={() => navigation.navigate("Examen1")}>
+          <Between>
+            <TabContentDescripcionImage source={image.images.Puntero} />
+            <TabContentDescripcionText>Presentar el examen</TabContentDescripcionText>
+          </Between>
+        </TabContentDescripcionButton>
       </Center>
      </>
-    )
-  }
-
-  const ContentComentarios = () => {
-    return (
-      <Container>
-        <CardComentario></CardComentario>
-      </Container>
     )
   }
 

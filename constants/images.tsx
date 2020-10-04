@@ -40,8 +40,14 @@ export const images = {
   ArrowLeft: require('../assets/Suscribe-1/arrow-left.png'),
 
   // VIDEO
-  Video1: require('../assets/Video/imagen1.png'),
+  Puntero: require('../assets/Video/puntero.png'),
   Like: require('../assets/Video/like.png'),
   LikeBackground: require('../assets/Video/like-background.png'),
   LikeWhite: require('../assets/Video/like-white.png'),
+
+  // EXAMEN
+  Paso1Examen: require('../assets/Examen/Paso1.png'),
+  Paso1ExamenBlack: require('../assets/Examen/Paso1-Black.png'),
+  Paso2Examen: require('../assets/Examen/Paso2.png'),
+  Paso2ExamenBlack: require('../assets/Examen/Paso2-Black.png'),
 }

@@ -122,9 +122,11 @@ export {
   TitleProgress,
   ProgressContainer,
   Progress,
+  ProgressBackground,
+  NumberProgress,
   DetalleTeacher,
   DetalleTime,
-  CardVideoContainer,
+  // CardVideoContainer,
   CardVideo,
   CardVideoTitle,
   CardVideoImage,
@@ -140,11 +142,13 @@ export {
   HeaderVideo,
   HeaderVideoTitle,
   VideoContainer,
-  TabContainer,
-  Tab,
+  // TabContainer,
+  // Tab,
   TabContent,
   TabContentDescription,
-  TabContentDescripcionVideo,
+  TabContentDescripcionButton,
+  TabContentDescripcionImage,
+  TabContentDescripcionText,
   CardComentario,
   CardComentarioImageContent,
   CardComentarioImagen,
@@ -155,5 +159,16 @@ export {
   CardComentarioLike,
   CardComentarioLikeNumber,
 } from './Video'
+
+export {
+  ExamenPaso1,
+  ExamenTitle,
+  Examen,
+  ExamenItem,
+  ExamenOptionLetter,
+  ExamenLetter,
+  ExamenText,
+  ModalText,
+} from './Examen'
 
 export { ThemeDark, ThemeLight } from './theme'

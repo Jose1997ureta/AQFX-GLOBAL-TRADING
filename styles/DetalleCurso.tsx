@@ -39,6 +39,20 @@ export const Progress = styled.View`
   height: 6px;
 `;
 
+export const ProgressBackground = styled.View`
+  border-radius: 5px;
+  height: 6px;
+  background-color: ${(props:any) => props.theme.fondo11};
+`;
+
+export const NumberProgress = styled.Text`
+  color: #FFF;
+  font-size: ${theme.sizes.h6}px;
+  line-height: 16px;
+  font-weight: ${theme.weight.bold};
+  margin-right: 10px;
+`;
+
 export const DetalleTeacher = styled.Text`
   font-size: ${theme.sizes.h6}px;
   line-height: 16px;
@@ -53,11 +67,11 @@ export const DetalleTime = styled.Text`
   font-weight: ${theme.weight.bold};
 `;
 
-export const CardVideoContainer = styled.View`
-  width: 100%;
-  padding: 0 20px;
-  background-color: ${(props:any) => props.theme.fondo1};
-`;
+// export const CardVideoContainer = styled.View`
+//   width: 100%;
+//   padding: 0 20px;
+//   background-color: ${(props:any) => props.theme.fondo1};
+// `;
 
 export const CardVideo = styled.TouchableHighlight`
   flex-direction: row;

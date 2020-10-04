@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet, FlatList } from 'react-native'
+import React from 'react'
+import { StyleSheet, FlatList } from 'react-native'
 import { HeaderNavigation, Loading, ListVideos } from '../components'
 import { images as image, theme } from '../constants'
 // import {  } from '../model/API_Noticias'
@@ -21,9 +21,11 @@ import {
   TitleProgress,
   ProgressContainer,
   Progress,
+  ProgressBackground,
+  NumberProgress,
   DetalleTeacher,
   DetalleTime,
-  CardVideoContainer,
+  // CardVideoContainer,
   CardVideo,
   CardVideoTitle,
   CardVideoImage,
@@ -108,9 +110,9 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
             <TituloDetalleHeader>Nombre del curso</TituloDetalleHeader>
             <TitleProgress>Progreso del curso: 0/0 contenidos</TitleProgress>
             <ProgressContainer>
-              <Text style={styles.NumberProgress}>{parametro}%</Text>
+              <NumberProgress>{parametro}%</NumberProgress>
               <Progress>
-                <View style={[styles.ProgressBackground, {width: `${parametro}%`, backgroundColor: `${state.theme.fondo11}`}]}></View>
+                <ProgressBackground style={{width: `${parametro}%`}}></ProgressBackground>
               </Progress>
             </ProgressContainer>
             <Row style={Base.between}>
@@ -119,9 +121,9 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
             </Row>
           </PaddingContainer>
         </DetalleHeader>
-        <CardVideoContainer>
+        <PaddingContainer>
           <ContinueVideo />
-        </CardVideoContainer>
+        </PaddingContainer>
         <CardVideoSeparate />
         <FlatList
           data={videos}
@@ -134,21 +136,21 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
 }
 
 const styles = StyleSheet.create({
-  NumberProgress: {
-    color: "#fff",
-    fontSize: theme.sizes.h6,
-    lineHeight: 16,
-    fontWeight: theme.weight.bold,
-    marginRight: 10,
-  },
+  // NumberProgress: {
+  //   color: "#fff",
+  //   fontSize: theme.sizes.h6,
+  //   lineHeight: 16,
+  //   fontWeight: theme.weight.bold,
+  //   marginRight: 10,
+  // },
 
   ProgressBackground: {
     borderRadius: 5,
     height: 6,
   },
 
-  CardVideoContainer: {
-    width: "100%",
-    paddingHorizontal: 20,
-  },
+  // CardVideoContainer: {
+  //   width: "100%",
+  //   paddingHorizontal: 20,
+  // },
 })
