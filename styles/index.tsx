@@ -168,7 +168,9 @@ export {
   ExamenOptionLetter,
   ExamenLetter,
   ExamenText,
-  ModalText,
+  ModalTextExamen,
+  ModalButtonExamen,
+  ModalButtonTextExamen,
 } from './Examen'
 
 export { ThemeDark, ThemeLight } from './theme'

@@ -59,6 +59,7 @@ export const Suscribe2Screen =  ({ navigation }: any) => {
             placeholderTextColor={theme.colors.textLight}
             keyboardType='numeric'
             maxLength={16}
+            // value='4242424242424242'
           />
         </InputItem>
 
@@ -73,6 +74,8 @@ export const Suscribe2Screen =  ({ navigation }: any) => {
                 maxLength={10}
                 editable = {false}
                 value={fechaTarjeta}
+                // value='31/10/2020'
+                
               />
               
             </TouchableOpacity>
@@ -91,6 +94,7 @@ export const Suscribe2Screen =  ({ navigation }: any) => {
               placeholderTextColor={theme.colors.textLight}
               keyboardType='numeric'
               maxLength={3}
+              // value='123'
             />
           </View>
         </Between>
@@ -100,6 +104,7 @@ export const Suscribe2Screen =  ({ navigation }: any) => {
             fieldName='country' 
             placeholder={'País'}
             placeholderTextColor={theme.colors.textLight}
+            // value='Peru'
           />
         </InputItem>
 

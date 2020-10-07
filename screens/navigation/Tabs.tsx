@@ -1,6 +1,6 @@
 import React from 'react'
 import { createAppContainer, createSwitchNavigator} from 'react-navigation'
-import { HomeStack, CursosStack } from './ScreenStack'
+import { HomeStack, CursoExamenStack } from './ScreenStack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import  { Ionicons, SimpleLineIcons }  from '@expo/vector-icons'
 import { theme } from '../../constants'
@@ -14,13 +14,13 @@ export const TabNavigator = createBottomTabNavigator({
     },
   },
   Cursos: {
-    screen: CursosStack,
+    screen: CursoExamenStack,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => <SimpleLineIcons name='notebook' size={24} color={tintColor}/>,
     }
   },
   Perfil: {
-    screen: CursosStack,
+    screen: CursoExamenStack,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-person' size={24} color={tintColor}/>,
     }

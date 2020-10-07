@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { theme } from '../constants'
 // import HTTPCliente from './HTTPClient'
 // import axios from "axios";
 
@@ -105,3 +106,22 @@ export const Live2All = () => {
 
   return { loading, list }
 }
+
+export const GETLIST = (ruta:string) => {
+  const [list, setList] = useState([])
+  const [loading, setLoaging] = useState(true)
+
+  const getAll = async () => {
+    const response = await fetch(`${theme._baseURL}${ruta}`)
+    const rpta = await response.json()
+    setLoaging(false)
+    setList(rpta.data)
+  }
+  
+  useEffect(() => {
+    getAll()
+  },[])
+
+  return { loading, list }
+
+} 

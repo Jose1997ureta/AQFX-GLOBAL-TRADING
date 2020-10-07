@@ -4844,6 +4844,11 @@ react-native-scrollable-tab-view@^1.0.0:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
 
+react-native-stripe-api@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-stripe-api/-/react-native-stripe-api-0.1.0.tgz#d1cb21fb0dc7ecc643f53d3e88a18e98e9d81ffd"
+  integrity sha1-0csh+w3H7MZD9T0+iKGOmOnYH/0=
+
 react-native-svg@12.1.0:
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.1.0.tgz#acfe48c35cd5fca3d5fd767abae0560c36cfc03d"

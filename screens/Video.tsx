@@ -109,7 +109,7 @@ export const VideoScreen = ({ navigation }: any) => {
     <>
       <TabContentDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus, consectetur adipiscing elit ut aliquam, purus sit amet luctus *consectetur adipiscing elit ut aliquam, purus sit amet luctu * aliquam, purus sit amet luctus</TabContentDescription>
       <Center>
-        <TabContentDescripcionButton style={Base.borderShadow} onPress={() => navigation.navigate("Examen1")}>
+        <TabContentDescripcionButton style={Base.borderShadow} onPress={() => navigation.navigate("Examen1")} underlayColor="#EEE">
           <Between>
             <TabContentDescripcionImage source={image.images.Puntero} />
             <TabContentDescripcionText>Presentar el examen</TabContentDescripcionText>

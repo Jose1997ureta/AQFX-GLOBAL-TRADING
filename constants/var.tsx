@@ -26,6 +26,8 @@ export const getFormatDate = (date: Date) =>{
     return `${d}/${m}/${year}`
 }
 
+export const _baseURL = () => 'https://dev.azzinformatica.com/api/v1/';
+
 export const colors = { 
   primary: '#28A070',
   secondary: '#4A4A4D',

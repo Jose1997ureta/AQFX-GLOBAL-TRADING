@@ -34,9 +34,8 @@ export const Modals = styled.View`
   padding: 20px;
   width: 270px;
   height: 275px;
-
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 

@@ -18,11 +18,14 @@ import {
   ExamenPaso1,
   ExamenTitle,
   Examen,
+  ModalButtonExamen,
+  ModalButtonTextExamen,
+
 
   ButtonPrimary,
   TextButtonPrimary,
   ButtonStyle,
-  ModalText,
+  ModalTextExamen,
 } from '../styles'
 
 export const Examen2Screen = ({navigation}:any) => {
@@ -42,8 +45,17 @@ export const Examen2Screen = ({navigation}:any) => {
   }
   
   const handlerSubmit = () => {
-    const rpts = {pregunta1: pregunta1, pregunta2: rpta };
-    setVisibility(true);
+    if(rpta != ""){
+      const rpts = {pregunta1: pregunta1, pregunta2: rpta };
+      setVisibility(true);
+    }else{
+      alert();
+    }
+  }
+
+  const handlerFinally = () => {
+    setVisibility(false)
+    navigation.navigate('Video');
   }
 
   return (
@@ -68,8 +80,10 @@ export const Examen2Screen = ({navigation}:any) => {
             </ButtonPrimary>
           </Center>
           <ModalScreen visibility={visibility}>
-            <ModalText>Felicidades :)</ModalText>
-            
+            <ModalTextExamen>{'Felicidades :)'}</ModalTextExamen>
+            <ModalButtonExamen onPress={() => handlerFinally()} underlayColor="#FFF">
+              <ModalButtonTextExamen>Salir</ModalButtonTextExamen>
+            </ModalButtonExamen>
           </ModalScreen>
         </PaddingContainer>
       </Container>
