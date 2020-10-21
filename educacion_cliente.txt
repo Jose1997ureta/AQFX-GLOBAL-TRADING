@@ -1,0 +1,27 @@
+https://dev.azzinformatica.com/api/v1/educacion_cliente/registrar
+
+BODY:
+
+{
+ 	"fk_educacion":2,
+	"fk_cliente":2
+}
+
+
+REGISTRAR VIDEO
+
+-------------------------------------------------------------------------
+https://dev.azzinformatica.com/api/v1/educacion_cliente/listar_app
+PARAMS:
+fk_grupo :(NUMBER,MIN:1),
+fk_cliente:(NUMBER,MIN:1)
+
+-- LISTAR INDEX DE LOS VIDEOS   ---> IMPLEMENTADO
+
+-------------------------------------------------------------------------
+https://dev.azzinformatica.com/api/v1/educacion_cliente/obtener_curso_asistido
+PARAMS:
+fk_cliente:(NUMBER,MIN:1)
+
+
+OBTENER NUEVO DE VIDEO ASISTIDO --> IMPLEMENTADO

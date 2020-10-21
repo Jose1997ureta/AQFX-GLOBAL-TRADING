@@ -32,13 +32,14 @@ export const Examen2Screen = ({navigation}:any) => {
   const [state]:any = useStateValue();
   const [rpta, setRpta] = useState('')
   const [visibility, setVisibility] = useState(false);
-  const pregunta1 = navigation.getParam("id");
+  const [nameButton, setNameButton] = useState('Cerrar');
+  const examen = navigation.getParam("item");
+  const index = navigation.getParam("index");
+  const countList = navigation.getParam("countList");
 
-  const Examens = [
-    {id: "4", letter: "A", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet", rpta: true},
-    {id: "5", letter: "B", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet", rpta: false},
-    {id: "6", letter: "C", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet", rpta: false},
-  ]
+  if(examen.length <= 0){
+    navigation.navigate('Examen1');
+  }
 
   const handlerSeleccion = (id:string) => {
     setRpta(id)
@@ -46,16 +47,30 @@ export const Examen2Screen = ({navigation}:any) => {
   
   const handlerSubmit = () => {
     if(rpta != ""){
-      const rpts = {pregunta1: pregunta1, pregunta2: rpta };
-      setVisibility(true);
+      examen.map((el:any) => {
+        if(rpta == el.id){
+          if(el.verdadera){
+            if(index == countList - 1){
+              setNameButton('Finalizar')
+            }
+            setVisibility(true)
+          }else{
+            alert('bad');
+          }
+        }
+      })
     }else{
-      alert();
+      alert('No ha seleccionado una respuesta');
     }
   }
 
   const handlerFinally = () => {
     setVisibility(false)
-    navigation.navigate('Video');
+    if(index == countList - 1 ){
+      alert('finalizo');
+    }else{
+      navigation.goBack();
+    }
   }
 
   return (
@@ -68,10 +83,10 @@ export const Examen2Screen = ({navigation}:any) => {
           <Center>
             <ExamenPaso1 source={state.theme.Paso2Examen} />
           </Center>
-          <ExamenTitle>¿Lorem ipsum dolorjsuhuhbuibiguib sit amet, consectetur adipiscing elit ut?</ExamenTitle>
+          <ExamenTitle>{examen.pregunta}</ExamenTitle>
           <Examen>
-            {Examens.map((examen:any) => (
-              <ListExamen key={examen.id} lista={examen} marker={rpta} onPress={() => handlerSeleccion(examen.id)} />
+            {examen.map((item:any, id:any) => (
+              <ListExamen key={item.id} id={item.id} title={item.respuesta} index={id + 1} marker={rpta} onPress={() => handlerSeleccion(item.id)} />
             ))}
           </Examen>
           <Center>
@@ -81,8 +96,8 @@ export const Examen2Screen = ({navigation}:any) => {
           </Center>
           <ModalScreen visibility={visibility}>
             <ModalTextExamen>{'Felicidades :)'}</ModalTextExamen>
-            <ModalButtonExamen onPress={() => handlerFinally()} underlayColor="#FFF">
-              <ModalButtonTextExamen>Salir</ModalButtonTextExamen>
+            <ModalButtonExamen onPress={() => handlerFinally()} underlayColor="#CCC">
+              <ModalButtonTextExamen>{nameButton}</ModalButtonTextExamen>
             </ModalButtonExamen>
           </ModalScreen>
         </PaddingContainer>

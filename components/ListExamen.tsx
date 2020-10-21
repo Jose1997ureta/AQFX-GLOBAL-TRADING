@@ -9,14 +9,14 @@ import {
 
 } from '../styles'
 
-export const ListExamen = ({ lista, onPress, marker }: any) => {
+export const ListExamen = ({ id, title, index, onPress, marker }: any) => {
   
   return (
     <ExamenItem onPress={onPress}>
-      <ExamenOptionLetter style={{backgroundColor: marker == lista.id ? theme.colors.primary: '#D4D6D8' }}>
-        <ExamenLetter>{lista.letter}</ExamenLetter>
+      <ExamenOptionLetter style={{backgroundColor: marker == id ? theme.colors.primary: '#D4D6D8' }}>
+        <ExamenLetter>{index}</ExamenLetter>
       </ExamenOptionLetter>
-      <ExamenText>{lista.description}</ExamenText>
+      <ExamenText>{title}</ExamenText>
     </ExamenItem>
   )
 }

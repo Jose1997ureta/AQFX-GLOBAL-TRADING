@@ -1,8 +1,8 @@
-import React from 'react'
-import { StyleSheet, FlatList } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, FlatList, AsyncStorage } from 'react-native'
 import { HeaderNavigation, Loading, ListVideos } from '../components'
 import { images as image, theme } from '../constants'
-// import {  } from '../model/API_Noticias'
+import { GET_VIDEOS,GET_CURSOS_INDEX } from '../model/API'
 import { useStateValue } from './states/ThemeState'
 import { 
   Base,
@@ -37,46 +37,35 @@ import {
 
 } from '../styles'
 
-export const DetalleCursoScreen = ({ navigation }:any) => {
+export const DetalleCursoScreen = ({ navigation, }:any) => {
   const [state]:any = useStateValue();
-  // const [porcentage, setPorcentage] = useState(0)
-  // const animation = new Animated.Value(0);
+  // const [newList, setNewList] = useState([])
+  const idCurso = navigation.getParam("idCurso");
+  const profesor = navigation.getParam("profesor");
+  const time = navigation.getParam("time");
+  const porcentaje = navigation.getParam("porcentaje");
+  const {loading, list} = GET_VIDEOS(idCurso);
+  const { listIndex } = GET_CURSOS_INDEX(idCurso);
+  let newArray:any = [];
 
-  const parametro = 70;
-  const videos = [
-    {id: "1", titulo: "tema 1 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "2", titulo: "tema 2 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "3", titulo: "tema 3 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "4", titulo: "tema 4 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "5", titulo: "tema 5 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "6", titulo: "tema 6 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "7", titulo: "tema 7 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "8", titulo: "tema 8 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "9", titulo: "tema 9 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "10", titulo: "tema 10 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "11", titulo: "tema 11 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "12", titulo: "tema 12 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "13", titulo: "tema 13 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "14", titulo: "tema 14 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-    {id: "15", titulo: "tema 15 ...", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus...", time: "00.00"},
-  ]
-
-  // useEffect(() => {
-  //   animation.addListener(({ value }:any) => {
-  //     setPorcentage(parseInt(value, 10))
-  //   });
-
-  //   Animated.timing(animation, {
-  //     toValue: parametro,
-  //     duration: 200,
-  //     useNativeDriver: true,
-  //     delay: 0
-  //   }).start();
-
-  //   return () => {
-  //     animation.removeAllListeners();
-  //   }
-  // }, [])
+  list.map((item:any) => {
+    let index1 = item.index;
+    if(listIndex.length > 0){
+      let number = listIndex.length;
+      if(index1 < number){
+        item = {item, active: 1 }
+      }else if(index1 == number){
+        item = {item, active: 1 }
+      }
+    }else{
+      if(index1 == 0){
+        item = {...item,active: 1};
+      }else{
+        item = {...item,active:0};
+      }
+    }
+    newArray.push(item)
+  })
 
   const ContinueVideo = () => {
     return (
@@ -99,6 +88,9 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
 
   return (
     <Vista>
+      { 
+      loading ? 
+      <Loading/> :
       <Container>
         <DetalleHeader>
           <PaddingContainer>
@@ -110,14 +102,14 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
             <TituloDetalleHeader>Nombre del curso</TituloDetalleHeader>
             <TitleProgress>Progreso del curso: 0/0 contenidos</TitleProgress>
             <ProgressContainer>
-              <NumberProgress>{parametro}%</NumberProgress>
+              <NumberProgress>{porcentaje}%</NumberProgress>
               <Progress>
-                <ProgressBackground style={{width: `${parametro}%`}}></ProgressBackground>
+                <ProgressBackground style={{width: `${porcentaje}%`}}></ProgressBackground>
               </Progress>
             </ProgressContainer>
             <Row style={Base.between}>
-              <DetalleTeacher>Instruido por: Stephanie Speranza</DetalleTeacher>
-              <DetalleTime>5 horas de contenido</DetalleTime>
+              <DetalleTeacher>Instruido por: {profesor}</DetalleTeacher>
+              <DetalleTime>{time} horas de contenido</DetalleTime>
             </Row>
           </PaddingContainer>
         </DetalleHeader>
@@ -126,11 +118,12 @@ export const DetalleCursoScreen = ({ navigation }:any) => {
         </PaddingContainer>
         <CardVideoSeparate />
         <FlatList
-          data={videos}
-          keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => <ListVideos lista={item} onPress={() => navigation.navigate('Video', {idVideo: item.id})} />}
+          data={newArray}
+          keyExtractor={(item:any) => String(item.id)}
+          renderItem={({ item }:any) => <ListVideos lista={item} onPress={() => navigation.navigate('Video', {idVideo: item.id, rutaVideo: item.video, descriptionVideo: item.descripcion})} /> }
         />
       </Container>
+      }
     </Vista>
   )
 }

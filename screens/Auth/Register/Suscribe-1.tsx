@@ -11,6 +11,7 @@ import { TextInput, HeaderNavigation, TextFooter } from '../../../components'
 import { useStateValue } from '../../states/ThemeState'
 import { 
   Base,
+  Vista,
   Container,
   PaddingContainer,
   Center,
@@ -82,6 +83,7 @@ export const Suscribe1Screen =  ({ navigation }: any) => {
           <TextInput 
             fieldName='user' 
             placeholder='Usuario'
+            autoCapitalize='none'
             placeholderTextColor={theme.colors.textLight}
             inlineImageLeft='ios-information-circle'
           />
@@ -157,7 +159,7 @@ export const Suscribe1Screen =  ({ navigation }: any) => {
   }
 
   return (
-    <SafeAreaView>
+    <Vista>
       <ScrollView>
         <Container>
           <PaddingContainer>
@@ -196,6 +198,7 @@ export const Suscribe1Screen =  ({ navigation }: any) => {
                     .required('El email es requerido'),
                   password: Yup
                     .string()
+                    .min(4, 'El password es muy corto')
                     .required('El password es requerido'),
                   repeatPassword: Yup
                     .string()
@@ -224,6 +227,6 @@ export const Suscribe1Screen =  ({ navigation }: any) => {
           </PaddingContainer>
         </Container>
       </ScrollView>
-    </SafeAreaView>
+    </Vista>
   )
 }

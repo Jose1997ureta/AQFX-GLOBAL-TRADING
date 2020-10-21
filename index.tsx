@@ -55,7 +55,7 @@ const Index = () => {
     <ThemeProvider theme={state.theme}>
       <StatusBar
         barStyle={state.theme.statusBarStyle}
-        backgroundColor={state.theme.background}
+        backgroundColor={state.theme.fondo1}
       />
       <Routes />
     </ThemeProvider>

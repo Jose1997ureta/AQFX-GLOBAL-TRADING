@@ -77,9 +77,10 @@ export const CardVideo = styled.TouchableHighlight`
   flex-direction: row;
   background-color: ${(props:any) => props.theme.fondo2};
   border-radius: 5px;
-  height: 77px;
+  height: auto;
   width: 100%;
   margin-bottom: 8px;
+  /* align-items: center; */
 `;
 
 export const CardVideoTitle = styled.Text`
@@ -106,7 +107,7 @@ export const CardVideoImageTime = styled.Text`
 `;
 
 export const CardVideoContent = styled.View`
-  padding: 5px 10px;
+  padding: 10px;
   flex: 1;
 `;
 

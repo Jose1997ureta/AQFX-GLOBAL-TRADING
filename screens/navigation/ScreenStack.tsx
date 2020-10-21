@@ -32,6 +32,8 @@ export const CursosStack = createStackNavigator({
   Curso: CursoScreen,
   DetalleCurso: DetalleCursoScreen,
   Video: VideoScreen,
+  Examen1: Examen1Screen,
+  Examen2: Examen2Screen,
 },{
   initialRouteName: 'Curso',
   headerMode: 'none',
@@ -42,15 +44,15 @@ export const CursosStack = createStackNavigator({
   },
 })
 
-export const CursoExamenStack = createSwitchNavigator({                        
-  CursoScreen: CursosStack,
-  Examen1: Examen1Screen,
-  Examen2: Examen2Screen,
-},{
-  initialRouteName: 'CursoScreen',
-  defaultNavigationOptions: {
-    gestureEnabled: false,
-    gestureDirection: 'horizontal',
-    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-  },
-})
+// export const CursoExamenStack = createSwitchNavigator({                        
+//   CursoScreen: CursosStack,
+//   Examen1: Examen1Screen,
+//   Examen2: Examen2Screen,
+// },{
+//   initialRouteName: 'CursoScreen',
+//   defaultNavigationOptions: {
+//     gestureEnabled: false,
+//     gestureDirection: 'horizontal',
+//     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+//   },
+// })

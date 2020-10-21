@@ -3,9 +3,9 @@ import { TabNavigator } from './Tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 
 export const DrawerNavigation = createDrawerNavigator({
-  Screens: TabNavigator
+  View: TabNavigator
 },{
-  initialRouteName: 'Screens',
+  initialRouteName: 'View',
   drawerPosition: 'right'
 })
   

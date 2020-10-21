@@ -1,5 +1,5 @@
-import React from "react";
-import { View, ScrollView } from 'react-native';
+import React, {useEffect} from "react";
+import { View, ScrollView, AsyncStorage } from 'react-native';
 import { MaterialIcons }  from '@expo/vector-icons'
 import { HeaderNavigation, ListNotice, Loading } from '../components'
 import { images as image, theme } from '../constants'
@@ -34,7 +34,14 @@ import {
 
 export const HomeScreen = ({ navigation }: any) => {
   const {loading, list} = NoticeAll();
-
+  // useEffect( () => {
+  //   d();
+  // })
+  
+  // const d = async() => {
+    
+  //   await AsyncStorage.removeItem("UserLogin")
+  // }
   return (
     <Vista>
       <ScrollView>

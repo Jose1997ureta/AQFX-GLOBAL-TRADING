@@ -39,15 +39,10 @@ import {
 
 export const VideoScreen = ({ navigation }: any) => {
   const idVideo = navigation.getParam("idVideo");
-  // const [state]:any = useStateValue();
-  // const [active, setActive] = useState(0)
-  // const [xTabOne, setXTabOne] = useState(0)
-  // const [xTabTwo, setXTabTwo] = useState(0)
-  // const [translateX, setTranslateX] = useState(new Animated.Value(0))
-  // const [translateXTabOne, setTranslateXTabOne] = useState(new Animated.Value(0))
-  // const [translateXTabTwo, setTranslateXTabTwo] = useState(new Animated.Value(width))
-  // const [translateY, setTranslateY] = useState(-1000)
-  
+  console.log(idVideo)
+  const rutaVideo = navigation.getParam("rutaVideo");
+  const descriptionVideo = navigation.getParam("descriptionVideo");
+
   const changeOrientation = async() => {
     const dim = Dimensions.get("screen")
     if(dim.height > dim.width){
@@ -61,36 +56,6 @@ export const VideoScreen = ({ navigation }: any) => {
     }
   }
 
-  // const handlerSlide = (type:number) => {
-  //   Animated.spring(translateX, {
-  //     toValue: type,
-  //     useNativeDriver: true,
-  //   }).start();
-    
-  //   if(active === 0){
-  //     Animated.parallel([
-  //       Animated.spring(translateXTabOne, {
-  //         toValue: 0,
-  //         useNativeDriver: true,
-  //       }).start(),
-  //       Animated.spring(translateXTabTwo, {
-  //         toValue: width,
-  //         useNativeDriver: true,
-  //       }).start()
-  //     ]);
-  //   }else{
-  //     Animated.parallel([
-  //       Animated.spring(translateXTabOne, {
-  //         toValue: -width,
-  //         useNativeDriver: true,
-  //       }).start(),
-  //       Animated.spring(translateXTabTwo, {
-  //         toValue: 0,
-  //         useNativeDriver: true,
-  //       }).start()
-  //   ]);
-  //   }
-  // }
 
   const Comentarios = [
     {id: "1", titulo: "Nombre de la persona", imagen: "", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut.", like: 0},
@@ -107,9 +72,9 @@ export const VideoScreen = ({ navigation }: any) => {
   const ContentDescription = () => {
     return (
     <>
-      <TabContentDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus, consectetur adipiscing elit ut aliquam, purus sit amet luctus *consectetur adipiscing elit ut aliquam, purus sit amet luctu * aliquam, purus sit amet luctus</TabContentDescription>
+      <TabContentDescription>{descriptionVideo}</TabContentDescription>
       <Center>
-        <TabContentDescripcionButton style={Base.borderShadow} onPress={() => navigation.navigate("Examen1")} underlayColor="#EEE">
+        <TabContentDescripcionButton style={Base.borderShadow} onPress={() => navigation.navigate("Examen1",{idVideo:idVideo})} underlayColor="#EEE">
           <Between>
             <TabContentDescripcionImage source={image.images.Puntero} />
             <TabContentDescripcionText>Presentar el examen</TabContentDescripcionText>
@@ -134,7 +99,7 @@ export const VideoScreen = ({ navigation }: any) => {
               <HeaderVideoTitle>Tema del video</HeaderVideoTitle>
               <VideoContainer>
                 <Video 
-                  source={{uri: `https://aqfx-upload.s3.us-east-2.amazonaws.com/public/a4910db2ce1abc9050371710c657b2f3-3_hola.mp4`}} 
+                  source={{uri: rutaVideo}} 
                   rate={1.0}
                   volume={1.0}
                   isMuted={false}

@@ -27,16 +27,6 @@ export const List2Live = ({lista}: any) => {
   lista.id == 4 ?  play = true: play = false
   
   const changeOrientation = async() => {
-    // const orientacion = await ScreenOrientation.getOrientationLockAsync();
-    // if( orientacion == 5){
-    //   await ScreenOrientation.lockAsync(
-    //     ScreenOrientation.OrientationLock.PORTRAIT
-    //   );
-    // }else if (orientacion == 2){
-    //   await ScreenOrientation.lockAsync(
-    //     ScreenOrientation.OrientationLock.LANDSCAPE
-    //   );
-    // }
     const dim = Dimensions.get("screen")
     if(dim.height > dim.width){
       console.log("portrait")
@@ -59,11 +49,11 @@ export const List2Live = ({lista}: any) => {
           <PaddingContainer>
             <Row style={{marginTop: theme.sizes.margin}}>
               <LiveItemHeaderTitle>{lista.titulo}</LiveItemHeaderTitle>
-              <LiveItemPuntoRed></LiveItemPuntoRed>
+              <LiveItemPuntoRed/>
             </Row>
             <LiveItemImageContainer>
               <Video 
-                source={{uri: `https://aqfx-upload.s3.us-east-2.amazonaws.com/${lista.video}`}} 
+                source={{uri: `${lista.video}`}} 
                 rate={1.0}
                 volume={1.0}
                 isMuted={false}

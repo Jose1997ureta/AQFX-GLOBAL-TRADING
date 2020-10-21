@@ -7,6 +7,7 @@ import { HeaderNavigation, TextFooter } from '../../../components'
 import { useStateValue } from '../../states/ThemeState'
 import { 
   Base,
+  Vista,
   Container,
   PaddingContainer,
   Center,
@@ -99,7 +100,7 @@ export const Suscribe3Screen =  ({ navigation }: any) => {
     
   }
 
-  const handlerSubmitImage = async(idUsuario:any, image) => {
+  const handlerSubmitImage = async(idUsuario:any, image:any) => {
     const uri = image; 
     const name = uri.split('/').pop() || '';
     let match = /\.(\w+)$/.exec(name);
@@ -121,7 +122,7 @@ export const Suscribe3Screen =  ({ navigation }: any) => {
    
     const rpta = await response.json()
     if(rpta.data == 'Ok'){
-      console.log(rpta);
+      await AsyncStorage.setItem('UserLogin',String(idUsuario))
       setIsLoading(false);
     }else{
       console.log(rpta.data)
@@ -129,7 +130,7 @@ export const Suscribe3Screen =  ({ navigation }: any) => {
   } 
 
   return (
-    <SafeAreaView>
+    <Vista>
       <ScrollView>
         <Container>
           <PaddingContainer style={[{height: height},Base.between]}>
@@ -175,6 +176,6 @@ export const Suscribe3Screen =  ({ navigation }: any) => {
           </PaddingContainer>
         </Container>
       </ScrollView>
-    </SafeAreaView>
+    </Vista>
   )
 }

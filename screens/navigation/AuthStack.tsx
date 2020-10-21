@@ -28,7 +28,7 @@ export const AuthStack = createStackNavigator({
 export const BaseStack = createSwitchNavigator({
   Splash: SplashScreen,
   AuthStack: AuthStack,
-  Scrrens: DrawerNavigation,
+  Screens: DrawerNavigation,
 },
 {
   initialRouteName: 'Splash',

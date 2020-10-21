@@ -11,6 +11,7 @@ export const ExamenTitle = styled.Text`
   color: ${(props:any) => props.theme.fondo4};
   font-weight: ${theme.weight.bold};
   margin-bottom: 50px;
+  text-align: center;
 `;
 
 export const Examen = styled.View`
@@ -20,7 +21,7 @@ export const Examen = styled.View`
 export const ExamenItem = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-bottom: ${theme.sizes.margin}px;
+  margin-bottom: 20px;
 `;
 
 export const ExamenOptionLetter = styled.View`
@@ -43,7 +44,7 @@ export const ExamenLetter = styled.Text`
 
 export const ExamenText = styled.Text`
   flex: 1;
-  font-size: ${theme.sizes.h6}px;
+  font-size: ${theme.sizes.h4}px;
   line-height: ${theme.sizes.h4}px;
   color: ${(props:any) => props.theme.fondo4};
   font-weight: ${theme.weight.bold};

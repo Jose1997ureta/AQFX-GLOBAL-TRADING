@@ -25,8 +25,9 @@ export const SplashScreen = ({ navigation }: any) => {
       // })
       // console.log(usuario + "hooa")
       setTimeout(() => {
-        navigation.navigate(isLogin !== "" ? 'AuthStack': 'AuthStack')
+        navigation.navigate(isLogin !== null ? 'Screens': 'AuthStack')
       }, 3000)
+      // console.log(isLogin)
 
     }
 

@@ -8,7 +8,7 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle)
 const AnimatedInput = Animated.createAnimatedComponent(TextInput)
 
 export default function Donut({
-  porcentage = 75,
+  porcentage = 0,
   radius = 28,
   strokeWidth= 8,
   duration = 500,
@@ -98,7 +98,7 @@ export default function Donut({
         underlineColorAndroid='transparent'
         editable={false}
         defaultValue='0'
-        style={[StyleSheet.absoluteFillObject, styles.TextDonut,{color: state.theme.textColor}]} />
+        style={[StyleSheet.absoluteFillObject, styles.TextDonut,{color: state.theme.fondo4}]} />
     </View>
   )
 }
