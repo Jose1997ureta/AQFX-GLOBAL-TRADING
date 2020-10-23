@@ -97,7 +97,6 @@ export const Suscribe3Screen =  ({ navigation }: any) => {
     }else{
       alert(rpta.error)
     }
-    
   }
 
   const handlerSubmitImage = async(idUsuario:any, image:any) => {

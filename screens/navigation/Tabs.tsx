@@ -10,14 +10,22 @@ export const TabNavigator = createBottomTabNavigator({
     screen: HomeStack,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => <SimpleLineIcons name='home' size={24} color={tintColor}/>,
-      
+      tabBarOnPress:({navigation}:any) => {
+        navigation.popToTop();
+        navigation.navigate('Home');
+      }
     },
   },
   Cursos: {
     screen: CursosStack,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => <SimpleLineIcons name='notebook' size={24} color={tintColor}/>,
+      tabBarOnPress:({navigation}:any) => {
+        navigation.popToTop();
+        navigation.navigate('Curso');
+      }
     }
+    
   },
   Perfil: {
     screen: CursosStack,
@@ -31,7 +39,7 @@ export const TabNavigator = createBottomTabNavigator({
     showLabel: false,
     activeTintColor: theme.colors.primary,
     inactiveTintColor: theme.colors.secondary,
-  }
+  },
 })
 
 export default createAppContainer(TabNavigator)

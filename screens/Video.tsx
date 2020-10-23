@@ -39,9 +39,18 @@ import {
 
 export const VideoScreen = ({ navigation }: any) => {
   const idVideo = navigation.getParam("idVideo");
-  console.log(idVideo)
   const rutaVideo = navigation.getParam("rutaVideo");
+  const nameVideo = navigation.getParam("nameVideo");
   const descriptionVideo = navigation.getParam("descriptionVideo");
+  const listIndex = navigation.getParam("listIndex");
+  const index = navigation.getParam("index");
+  let isButton = true;
+
+  listIndex.map((el:any) => {
+    if(el.index == index){
+      isButton = false;
+    }
+  })
 
   const changeOrientation = async() => {
     const dim = Dimensions.get("screen")
@@ -73,14 +82,17 @@ export const VideoScreen = ({ navigation }: any) => {
     return (
     <>
       <TabContentDescription>{descriptionVideo}</TabContentDescription>
-      <Center>
+      {
+        isButton ? 
+        <Center>
         <TabContentDescripcionButton style={Base.borderShadow} onPress={() => navigation.navigate("Examen1",{idVideo:idVideo})} underlayColor="#EEE">
           <Between>
             <TabContentDescripcionImage source={image.images.Puntero} />
             <TabContentDescripcionText>Presentar el examen</TabContentDescripcionText>
           </Between>
         </TabContentDescripcionButton>
-      </Center>
+      </Center> : null
+      }
      </>
     )
   }
@@ -96,7 +108,7 @@ export const VideoScreen = ({ navigation }: any) => {
                   <ImagenBack source={image.images.ArrowLeft} />
                 </HeaderBack>
               </HeaderNavigation>
-              <HeaderVideoTitle>Tema del video</HeaderVideoTitle>
+              <HeaderVideoTitle>{nameVideo}</HeaderVideoTitle>
               <VideoContainer>
                 <Video 
                   source={{uri: rutaVideo}} 

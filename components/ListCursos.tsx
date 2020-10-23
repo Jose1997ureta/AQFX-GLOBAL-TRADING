@@ -46,7 +46,7 @@ export const ListCursos = ({lista, listaCount, navigation }: any) => {
   }
 
   return (
-    <Curso style={Base.borderShadow} onPress={() => navigation.navigate("DetalleCurso", {idCurso: lista.id, profesor: lista.profesor, time: lista.tiempo, porcentaje: p}) } activeOpacity={0.1}
+    <Curso style={Base.borderShadow} onPress={() => navigation.navigate("DetalleCurso", {idCurso: lista.id, profesor: lista.profesor, time: lista.tiempo, porcentaje: p, nameCurso: lista.nombre}) } activeOpacity={0.1}
     underlayColor="#eee">
       <>
       <CursoContainerImage style={Base.borderShadow}>

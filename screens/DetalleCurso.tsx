@@ -43,6 +43,7 @@ export const DetalleCursoScreen = ({ navigation, }:any) => {
   const idCurso = navigation.getParam("idCurso");
   const profesor = navigation.getParam("profesor");
   const time = navigation.getParam("time");
+  const nameCurso = navigation.getParam("nameCurso");
   const porcentaje = navigation.getParam("porcentaje");
   const {loading, list} = GET_VIDEOS(idCurso);
   const { listIndex } = GET_CURSOS_INDEX(idCurso);
@@ -53,9 +54,9 @@ export const DetalleCursoScreen = ({ navigation, }:any) => {
     if(listIndex.length > 0){
       let number = listIndex.length;
       if(index1 < number){
-        item = {item, active: 1 }
+        item = {...item, active: 1 }
       }else if(index1 == number){
-        item = {item, active: 1 }
+        item = {...item, active: 1 }
       }
     }else{
       if(index1 == 0){
@@ -66,6 +67,8 @@ export const DetalleCursoScreen = ({ navigation, }:any) => {
     }
     newArray.push(item)
   })
+
+  // console.log(newArray)
 
   const ContinueVideo = () => {
     return (
@@ -99,7 +102,7 @@ export const DetalleCursoScreen = ({ navigation, }:any) => {
                 <ImagenBack source={image.images.ArrowLeft} />
               </HeaderBack>
             </HeaderNavigation>
-            <TituloDetalleHeader>Nombre del curso</TituloDetalleHeader>
+            <TituloDetalleHeader>{nameCurso}</TituloDetalleHeader>
             <TitleProgress>Progreso del curso: 0/0 contenidos</TitleProgress>
             <ProgressContainer>
               <NumberProgress>{porcentaje}%</NumberProgress>
@@ -120,7 +123,7 @@ export const DetalleCursoScreen = ({ navigation, }:any) => {
         <FlatList
           data={newArray}
           keyExtractor={(item:any) => String(item.id)}
-          renderItem={({ item }:any) => <ListVideos lista={item} onPress={() => navigation.navigate('Video', {idVideo: item.id, rutaVideo: item.video, descriptionVideo: item.descripcion})} /> }
+          renderItem={({ item }:any) => <ListVideos lista={item} onPress={() => navigation.navigate('Video', { idVideo: item.id, rutaVideo: item.video, descriptionVideo: item.descripcion, listIndex: listIndex, index: item.index, nameVideo: item.titulo})} /> }
         />
       </Container>
       }

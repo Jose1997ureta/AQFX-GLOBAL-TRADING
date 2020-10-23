@@ -14,6 +14,7 @@ export const SplashScreen = ({ navigation }: any) => {
     // }, 3000)
     async function getSession() {
       const isLogin = await AsyncStorage.getItem('UserLogin');
+      // await AsyncStorage.removeItem('isPregunta')
       // const usuario = state.user;
       // if(usuario){
       //   dispach({

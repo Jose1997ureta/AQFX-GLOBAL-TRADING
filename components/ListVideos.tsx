@@ -16,11 +16,11 @@ export const ListVideos = ({ lista, onPress }: any) => {
   return (
     <PaddingContainer style={{marginTop: 10}} >
       <CardVideo 
-        style={[Base.borderShadow, {opacity: lista.active == 0 ? 0.7: 1}]} 
+        style={[Base.borderShadow, {opacity: lista.active && lista.active == 1 ? 1: 0.7}]} 
         activeOpacity={0.4} 
         underlayColor="#eee" 
         onPress={onPress} 
-        disabled={lista.active == 0 ? true : false}
+        disabled={lista.active && lista.active == 1 ? false : true}
         >
         <>
         <CardVideoImage>

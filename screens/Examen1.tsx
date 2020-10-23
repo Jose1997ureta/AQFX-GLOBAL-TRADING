@@ -32,16 +32,27 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 export const Examen1Screen = ({navigation}:any) => {
   const [state]:any = useStateValue()
-  const [rpta, setRpta] = useState('')
-  // const [listData, setListData] = useState([]);
+  const [markes, setMarkes] = useState([])
   const [visibility, setVisibility] = useState(true)
   const idVideo = navigation.getParam("idVideo");
   const {loading,list} =  GET_QUESTIONARIO(idVideo);
 
+  useEffect(() => {
+    const getSession = async () => {
+      const markers:any = await AsyncStorage.getItem('isPregunta');
+      if(markers !== null){
+        setVisibility(false);
+      }
 
-  const handlerSeleccion = (id:string, examen:any, index:any) => {
-    setRpta(id)
-    navigation.navigate("Examen2", {item: examen.respuestas, index: index, countList: list.length })
+      setMarkes(markers);
+    }
+
+    getSession();
+  })
+
+  const handlerSeleccion = (examen:any, index:any) => {
+    // setRpta(id)
+    navigation.navigate("Examen2", {item: examen, index: index, countList: list.length, idVideo: idVideo})
     // console.log(examen)
   }
 
@@ -52,6 +63,8 @@ export const Examen1Screen = ({navigation}:any) => {
   //     alert();
   //   }
   // }
+
+  // console.log(list)
 
   return (
     <Vista>
@@ -70,7 +83,7 @@ export const Examen1Screen = ({navigation}:any) => {
             <ExamenTitle>Cuestionario</ExamenTitle>
             <Examen>
               {list.map((examen:any, id) => (
-                <ListExamen key={examen.id} id={examen.id} title={examen.pregunta} index={id + 1} marker={rpta} onPress={() => handlerSeleccion(examen.id, examen ,id)} />
+                <ListExamen key={examen.id} id={examen.id} title={examen.pregunta} index={id + 1} markes={markes} onPress={() => handlerSeleccion(examen, id)}  />
               ))}
             </Examen>
             {/* <Center>
@@ -80,11 +93,7 @@ export const Examen1Screen = ({navigation}:any) => {
             </Center> */}
 
             <ModalScreen visibility={visibility}>
-              {/* <ScrollView style={{backgroundColor: 'blue'}}>
-                <Center style={{justifyContent:'center' ,backgroundColor: 'red', flex: 1, height: '100%'}}> */}
-                <ModalTextExamen>{'Mensaje motivacional :)'}</ModalTextExamen>
-                {/* </Center>
-              </ScrollView> */}
+              <ModalTextExamen>{'Mensaje motivacional :)'}</ModalTextExamen>
               <ModalButtonExamen onPress={() => setVisibility(false)} underlayColor="#FFF">
                 <ModalButtonTextExamen>Comenzar</ModalButtonTextExamen>
               </ModalButtonExamen>
